@@ -58,8 +58,8 @@
 
                 <div class="flag-dropdown">
                     <ul>
-                        <li><a href="/i18n/en">English</a></li>
-                        <li><a href="/i18n/ch">China</a></li>
+                        <li><a href="/i18n/en"><%= __('english') %></a></li>
+                        <li><a href="/i18n/ch"><%= __('china') %></a></li>
                     </ul>
                 </div>
             </div>
@@ -82,21 +82,21 @@
                 <li>
                     <i class="icon_phone"></i>
                     <div class="info-text">
-                        <span>Phone:</span>
+                        <span><%= __('phone') %>:</span>
                         <p>(+12) 345 6789</p>
                     </div>
                 </li>
                 <li>
                     <i class="icon_map"></i>
                     <div class="info-text">
-                        <span>Address:</span>
+                        <span><%= __('address') %>:</span>
                         <p>16 Creek Ave, <span>NY</span></p>
                     </div>
                 </li>
                 <li>
                     <i class="icon_mail"></i>
                     <div class="info-text">
-                        <span>Email:</span>
+                        <span><%= __('email') %>:</span>
                         <p>Info.cololib@gmail.com</p>
                     </div>
                 </li>
@@ -127,21 +127,21 @@
                             <div class="language-option">
                                 <% if(current_locale == 'en'){ %>
                                     <img src="/img/flag.png" alt="">
-                                    <span>English</span>
+                                    <span><%= __('english') %></span>
                                     <i class="fa fa-angle-down"></i>
                                   <% } else{ %>  
                                     <img src="/img/ch.png" alt="">
-                                    <span>China</span>
+                                    <span><%= __('china') %></span>
                                     <i class="fa fa-angle-down"></i>
                                  <% } %>
                                 <div class="flag-dropdown">
                                     <ul>
-                                        <li><a href="/i18n/en">English</a></li>
-                                        <li><a href="/i18n/ch">China</a></li>
+                                        <li><a href="/i18n/en"><%= __('english') %></a></li>
+                                        <li><a href="/i18n/ch"><%= __('china') %></a></li>
                                     </ul>
                                 </div>
                             </div>
-                            <a href="#" class="property-sub">Submit Property</a>
+                            <a href="#" class="property-sub"><%= __('submit_property') %></a>
                         </div>
                     </div>
                 </div>
@@ -161,21 +161,21 @@
                                 <li>
                                     <i class="icon_phone"></i>
                                     <div class="info-text">
-                                        <span>Phone:</span>
+                                        <span><%= __('phone') %>:</span>
                                         <p>(+12) 345 6789</p>
                                     </div>
                                 </li>
                                 <li>
                                     <i class="icon_map"></i>
                                     <div class="info-text">
-                                        <span>Address:</span>
+                                        <span><%= __('address') %>:</span>
                                         <p>16 Creek Ave, <span>NY</span></p>
                                     </div>
                                 </li>
                                 <li>
                                     <i class="icon_mail"></i>
                                     <div class="info-text">
-                                        <span>Email:</span>
+                                        <span><%= __('email') %>:</span>
                                         <p>Info.cololib@gmail.com</p>
                                     </div>
                                 </li>
@@ -201,16 +201,16 @@
                             <div class="logo">
                                 <a href="#"><img src="/img/footer-logo.png" alt=""></a>
                             </div>
-                            <p>Subscribe our newsletter gor get notification about new updates.</p>
+                            <p><%= __('subscribe') %></p>
                             <form action="#" class="newslatter-form">
-                                <input type="text" placeholder="Enter your email...">
+                                <input type="text" placeholder="<%= __('enter_email') %>">
                                 <button type="submit"><i class="fa fa-location-arrow"></i></button>
                             </form>
                         </div>
                     </div>
                     <div class="col-lg-3 offset-lg-1">
                         <div class="footer-widget">
-                            <h4>Property City</h4>
+                            <h4><%= __('property_city') %></h4>
                             <ul>
                                 <li><i class="fa fa-caret-right"></i> <a href="#">Florida</a></li>
                                 <li><i class="fa fa-caret-right"></i> <a href="#">New York</a></li>
@@ -227,7 +227,7 @@
                     </div>
                     <div class="col-lg-2">
                         <div class="footer-widget">
-                            <h4>Social</h4>
+                            <h4><%= __('social') %></h4>
                             <ul class="social">
                                 <li><i class="ti-facebook"></i> <a href="#">Facebook</a></li>
                                 <li><i class="ti-instagram"></i> <a href="#">Instagram</a></li>
@@ -238,7 +238,7 @@
                     </div>
                     <div class="col-lg-3">
                         <div class="footer-widget">
-                            <h4>Contact Us</h4>
+                            <h4><%= __('contact_us') %></h4>
                             <ul class="contact-option">
                                 <li><i class="fa fa-map-marker"></i> 16 Creek Ave. Farming, NY</li>
                                 <li><i class="fa fa-phone"></i> (+88) 666 121 4321</li>
@@ -251,7 +251,7 @@
             </div>
             <div class="copyright-text">
                 <p><p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="ti-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | <i class="ti-heart" aria-hidden="true"></i> by <a href="https://pad-tr.com" target="_blank">PAD</a>
   <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p></p>
             </div>
         </div>

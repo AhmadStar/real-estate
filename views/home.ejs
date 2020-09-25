@@ -23,7 +23,7 @@
                                 <p class="room-location"><i class="icon_pin"></i> <%= row.location %></p>
                                 <h2><%= row.small_desc %></h2>
                                 <div class="room-price">
-                                    <span>Start Form:</span>
+                                    <span><%= __('start_from') %></span>
                                     <p>$<%= row.price %></p>
                                 </div>
                                 <ul class="room-features">
@@ -33,15 +33,15 @@
                                     </li>
                                     <li>
                                         <i class="fa fa-bed"></i>
-                                        <p><%= row.rooms %> Bed Room</p>
+                                        <p><%= row.rooms %> <%= __('bed_room') %></p>
                                     </li>
                                     <li>
                                         <i class="fa fa-bath"></i>
-                                        <p><%= row.bath %> Baths Bed</p>
+                                        <p><%= row.bath %> <%= __('baths_bed') %></p>
                                     </li>
                                     <li>
                                         <i class="fa fa-car"></i>
-                                        <p><%= row.garage %> Garage</p>
+                                        <p><%= row.garage %> <%= __('garage') %></p>
                                     </li>
                                 </ul>
                             </div>
@@ -72,23 +72,23 @@
                 <div class="search-form-text">
                     <div class="search-text">
                         <i class="fa fa-search"></i>
-                        Find Your Home
+                        <%= __('find_your_home') %>
                     </div>
                     <div class="home-text">
                         <i class="fa fa-home"></i>
-                        House For Sell
+                        <%= __('house_for_sell') %>
                     </div>
                 </div>
                 <form id="search" action="/search" method="POST" class="filter-form">
                     <div class="first-row row">
                         <select name="type">
-                            <option value="">Property type</option>
-                            <option value="Villa">Villa</option>
-                            <option value="TownHose">TownHouse</option>
-                            <option value="Apartment">Apartment</option>
+                            <option value=""><%= __('property_type') %></option>
+                            <option value="Villa"><%= __('villa') %></option>
+                            <option value="TownHose"><%= __('town_house') %></option>
+                            <option value="Apartment"><%= __('apartment') %></option>
                         </select>
                         <select name="room">
-                            <option value="">Bedroom</option>
+                            <option value=""><%= __('bedroom') %></option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -97,7 +97,7 @@
                             <option value="6">6+</option>
                         </select>
                         <select name="bath">
-                            <option value="">Bathroom</option>
+                            <option value=""><%= __('bathroom') %></option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -106,28 +106,28 @@
                             <option value="6">6+</option>
                         </select>
                         <select name="furniture_type">
-                            <option value="">Furniture type</option>
-                            <option value="Villa">Unfurnished</option>
-                            <option value="TownHose">Furnished</option>
-                            <option value="Apartment">Semi Furnished</option>
+                            <option value=""><%= __('furniture_type') %></option>
+                            <option value="Villa"><%= __('unfurnished') %></option>
+                            <option value="TownHose"><%= __('furnished') %></option>
+                            <option value="Apartment"><%= __('semi_furnished') %></option>
                         </select>
                     </div>
                     <div class="second-row row">
                         <div class="price-range-wrap">
                             <div class="price-text">
-                                <label for="priceRange">Price:</label>
+                                <label for="priceRange"><%= __('price') %>:</label>
                                 <input type="text" name="price" id="priceRange" readonly>
                             </div>
                             <div id="price-range" class="slider"></div>
                         </div>
                         <div class="room-size-range">
                             <div class="price-text">
-                                <label for="roomsizeRange">Size:</label>
+                                <label for="roomsizeRange"><%= __('size') %>:</label>
                                 <input type="text" name="space" id="roomsizeRange" readonly>
                             </div>
                             <div id="roomsize-range" class="slider"></div>
                         </div>
-                        <input type="submit" value="Search" class="search-btn" />
+                        <input type="submit" value="<%= __('search') %>" class="search-btn" />
                     </div>
                 </form>
             </div>
@@ -142,8 +142,8 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-title">
-                    <span>Find Your Dream House</span>
-                    <h2>How It Work</h2>
+                    <span><%= __('find_your_house') %></span>
+                    <h2><%= __('how_it_work') %></h2>
                 </div>
             </div>
         </div>
@@ -151,21 +151,21 @@
             <div class="col-lg-4">
                 <div class="single-howit-works">
                     <img src="img/howit-works/howit-works-1.png" alt="">
-                    <h4>Search & Find Apertment</h4>
+                    <h4><%= __('search_apartment') %></h4>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="single-howit-works">
                     <img src="img/howit-works/howit-works-2.png" alt="">
-                    <h4>Find Your Room</h4>
+                    <h4><%= __('find_room') %></h4>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="single-howit-works">
                     <img src="img/howit-works/howit-works-3.png" alt="">
-                    <h4>Talk To Agent</h4>
+                    <h4><%= __('talk_to_agent') %></h4>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
                 </div>
             </div>
@@ -180,8 +180,8 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-title">
-                    <span>Listing From Our Agents</span>
-                    <h2>Featured Properties</h2>
+                    <span><%= __('list_from_agent') %></span>
+                    <h2><%= __('featured_properties') %></h2>
                 </div>
             </div>
         </div>
@@ -192,15 +192,15 @@
                         <div class="feature-item">
                             <div class="fi-pic set-bg" data-setbg="img/<%= row.feature_image %>">
                                 <div class="pic-tag">
-                                    <div class="f-text">feauture</div>
-                                    <div class="s-text">For Sale</div>
+                                    <div class="f-text"><%= __('feauture') %></div>
+                                    <div class="s-text"><%= __('for_sale') %></div>
                                 </div>
                                 <div class="feature-author">
                                     <div class="fa-pic">
                                         <img src="img/feature/f-author-3.jpg" alt="">
                                     </div>
                                     <div class="fa-text">
-                                        <span>Jonathan Walters</span>
+                                        <span><%= __('jonathan_walters') %></span>
                                     </div>
                                 </div>
                             </div>
@@ -234,12 +234,12 @@
                                 <ul class="room-features contact">
                                     <li>
                                         <a class="btn btn-sm btn-outline-primary btn-block text-uppercase font-weight-500">
-                                            <i class="fa fa-phone"></i>Call
+                                            <i class="fa fa-phone"></i><%= __('call') %>
                                         </a>
                                     </li>
                                     <li>
                                         <a class="btn btn-sm btn-outline-primary btn-block text-uppercase font-weight-500">
-                                            <i class="fa fa-envelope"></i>Email
+                                            <i class="fa fa-envelope"></i><%= __('email') %>
                                         </a>
                                     </li>
                                 </ul>
