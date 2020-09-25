@@ -4,7 +4,9 @@ const mysql = require('mysql')
 const flash = require('connect-flash')
 const session = require('express-session')
 const passport = require('passport')
-// var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser')
+var path = require('path');
+var i18n = require('./i18n');
 
 
 const app = express()
@@ -17,7 +19,7 @@ var con = mysql.createConnection({
       host: "localhost",
       user: "jusoor",
       password: "jusoor",
-      database: "node",
+      database: "real_estate",
       insecureAuth : true
 })
 con.connect(function (err) {
@@ -36,9 +38,9 @@ app.set('view engine', 'ejs')
 // Body parser
 app.use(express.urlencoded({ encoded: false }))
 
-// app.use(bodyParser.urlencoded({
-//   extended: true
-// }));
+
+app.use(cookieParser());
+app.use(i18n);
 
 
 // express session
@@ -63,6 +65,12 @@ app.use((req, res, next) => {
   next()
 })
 
+app.get("/i18n/:locale", function (req, res) {
+  res.cookie('lang', req.params.locale, { maxAge: 900000, httpOnly: true });
+
+  res.redirect('back');
+});
+
 // Routes
 app.use('/', require('./routes/index'))
 app.use('/users', require('./routes/users'))
@@ -70,7 +78,5 @@ app.use('/users', require('./routes/users'))
 app.use('*', (req, res) => {
   res.render('404' ,{ title:'Page Not Found'})
 })
-
-// const PORT = process.env.PORT || 32
 
 app.listen('5000')

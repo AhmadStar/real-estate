@@ -6,7 +6,7 @@ var con = mysql.createConnection({
   host: "localhost",
   user: "jusoor",
   password: "jusoor",
-  database: "node",
+  database: "real_estate",
   insecureAuth : true
 })
 con.connect(function (err) {

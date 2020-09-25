@@ -44,30 +44,37 @@
             <i class="icon_close"></i>
         </div>
         <div class="language-bar">
-            <div class="language-option">
-                <img src="/img/flag.png" alt="">
-                <span>English</span>
-                <i class="fa fa-angle-down"></i>
+            <div class="language-option">                
+                <% if(current_locale == 'en'){ %>
+                    <img src="/img/flag.png" alt="">
+                    <span>English</span>
+                    <i class="fa fa-angle-down"></i>
+                  <% } else{ %>  
+                    <img src="/img/ch.png" alt="">
+                    <span>China</span>
+                    <i class="fa fa-angle-down"></i>
+                 <% } %>
+
+
                 <div class="flag-dropdown">
                     <ul>
-                        <li><a href="#">English</a></li>
-                        <li><a href="#">Germany</a></li>
-                        <li><a href="#">China</a></li>
+                        <li><a href="/i18n/en">English</a></li>
+                        <li><a href="/i18n/ch">China</a></li>
                     </ul>
                 </div>
             </div>
             <div class="property-btn">
-                <a href="#" class="property-sub">Submit Property</a>
+                <a href="#" class="property-sub"><%= __('property_city') %></a>
             </div>
         </div>
         <nav class="main-menu">
             <ul>
-                <li><a href="./index.html">Home</a></li>
-                <li><a href="./property.html">Property</a></li>
-                <li><a href="./about-us.html">Agets</a></li>
-                <li><a href="./blog.html">News</a></li>
-                <li><a href="./property-details.html">Pages</a></li>
-                <li><a href="./contact.html">Contact</a></li>
+                <li><a href="./index.html"><%= __('home') %></a></li>
+                <li><a href="./property.html"><%= __('property') %></a></li>
+                <li><a href="./about-us.html"><%= __('agets') %></a></li>
+                <li><a href="./blog.html"><%= __('news') %></a></li>
+                <li><a href="./property-details.html"><%= __('pages') %></a></li>
+                <li><a href="./contact.html"><%= __('contact_us') %></a></li>
             </ul>
         </nav>
         <div class="nav-logo-right">
@@ -106,26 +113,31 @@
                     <div class="col-lg-7">
                         <nav class="main-menu">
                             <ul>
-                                <li><a href="/">Home</a></li>
-                                <li><a href="/property.html">Property</a></li>
-                                <li><a href="./about">About</a></li>
-                                <li><a href="./blog.html">News</a></li>
-                                <li><a href="./property-details.html">Pages</a></li>
-                                <li><a href="/contact">Contact</a></li>
+                                <li><a href="/"><%= __('home') %></a></li>
+                                <li><a href="./property.html"><%= __('property') %></a></li>
+                                <li><a href="/about"><%= __('agets') %></a></li>
+                                <li><a href="./blog.html"><%= __('news') %></a></li>
+                                <li><a href="./property-details.html"><%= __('pages') %></a></li>
+                                <li><a href="/contact"><%= __('contact_us') %></a></li>
                             </ul>
                         </nav>
                     </div>
                     <div class="col-lg-5">
                         <div class="top-right">
                             <div class="language-option">
-                                <img src="/img/flag.png" alt="">
-                                <span>English</span>
-                                <i class="fa fa-angle-down"></i>
+                                <% if(current_locale == 'en'){ %>
+                                    <img src="/img/flag.png" alt="">
+                                    <span>English</span>
+                                    <i class="fa fa-angle-down"></i>
+                                  <% } else{ %>  
+                                    <img src="/img/ch.png" alt="">
+                                    <span>China</span>
+                                    <i class="fa fa-angle-down"></i>
+                                 <% } %>
                                 <div class="flag-dropdown">
                                     <ul>
-                                        <li><a href="#">English</a></li>
-                                        <li><a href="#">Germany</a></li>
-                                        <li><a href="#">China</a></li>
+                                        <li><a href="/i18n/en">English</a></li>
+                                        <li><a href="/i18n/ch">China</a></li>
                                     </ul>
                                 </div>
                             </div>
