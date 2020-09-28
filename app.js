@@ -6,7 +6,8 @@ const session = require('express-session')
 const passport = require('passport')
 var cookieParser = require('cookie-parser')
 var path = require('path');
-var i18n = require('./i18n');
+var i18n = require('./config/i18n');
+const HttpError = require('./config/http-error');
 
 
 const app = express()
@@ -38,10 +39,11 @@ app.set('view engine', 'ejs')
 // Body parser
 app.use(express.urlencoded({ encoded: false }))
 
-
+// cookie
 app.use(cookieParser());
-app.use(i18n);
 
+// i18n for language
+app.use(i18n);
 
 // express session
 app.use(session({
@@ -65,15 +67,23 @@ app.use((req, res, next) => {
   next()
 })
 
-app.get("/i18n/:locale", function (req, res) {
+app.get("/lang/:locale", function (req, res) {
   res.cookie('lang', req.params.locale, { maxAge: 900000, httpOnly: true });
 
   res.redirect('back');
 });
 
 // Routes
-app.use('/', require('./routes/index'))
-app.use('/users', require('./routes/users'))
+app.use('/', require('./routes/home'))
+app.use('/dashboard', require('./routes/dashboard'))
+
+
+// app.use((req, res, next) => {
+//   const error = new HttpError('Could not find this route das d.', 404);
+//   // throw error;
+//   console.log(error);
+// });
+
 
 app.use('*', (req, res) => {
   res.render('404' ,{ title:'Page Not Found'})

@@ -274,6 +274,14 @@ ul, ol {
 	display: inline-block;
 	margin-right: 2px;
 }
+
+/* custom ahmad added for color drop down */
+.top-nav .top-right .flag-dropdown span {
+	font-size: 14px;
+	color: #000;
+	display: inline-block;
+	margin-right: 2px;
+}
 .top-nav .top-right .language-option i {
 	color: #ffffff;
 	font-size: 13px;

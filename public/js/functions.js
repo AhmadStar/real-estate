@@ -28,3 +28,13 @@ $(document).ready(function(){
     });
 
 });  
+
+
+$(function () {
+
+    // Date range picker
+    $('#reservationdate').datetimepicker({
+        format: 'L'
+    });
+
+})

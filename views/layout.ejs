@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="/css/magnific-popup.css" type="text/css">
     <link rel="stylesheet" href="/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="/css/style.css" type="text/css">
-    <link rel="icon" type="image/png" href="/img/flag.png"/>
+    <link rel="icon" type="image/png" href="/img/favicon.ico"/>
 
 </head>
 
@@ -58,8 +58,18 @@
 
                 <div class="flag-dropdown">
                     <ul>
-                        <li><a href="/i18n/en"><%= __('english') %></a></li>
-                        <li><a href="/i18n/ch"><%= __('china') %></a></li>
+                        <li>
+                            <a href="/lang/en">
+                            <img src="/img/flag.png" alt="">
+                            <span><%= __('english') %></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/lang/ch">
+                                <img src="/img/ch.png" alt="">
+                                <span><%= __('china') %></span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -71,7 +81,7 @@
             <ul>
                 <li><a href="./index.html"><%= __('home') %></a></li>
                 <li><a href="./property.html"><%= __('property') %></a></li>
-                <li><a href="./about-us.html"><%= __('agets') %></a></li>
+                <li><a href="./about-us.html"><%= __('about') %></a></li>
                 <li><a href="./blog.html"><%= __('news') %></a></li>
                 <li><a href="./property-details.html"><%= __('pages') %></a></li>
                 <li><a href="./contact.html"><%= __('contact_us') %></a></li>
@@ -115,7 +125,7 @@
                             <ul>
                                 <li><a href="/"><%= __('home') %></a></li>
                                 <li><a href="./property.html"><%= __('property') %></a></li>
-                                <li><a href="/about"><%= __('agets') %></a></li>
+                                <li><a href="/about"><%= __('about') %></a></li>
                                 <li><a href="./blog.html"><%= __('news') %></a></li>
                                 <li><a href="./property-details.html"><%= __('pages') %></a></li>
                                 <li><a href="/contact"><%= __('contact_us') %></a></li>
@@ -136,8 +146,18 @@
                                  <% } %>
                                 <div class="flag-dropdown">
                                     <ul>
-                                        <li><a href="/i18n/en"><%= __('english') %></a></li>
-                                        <li><a href="/i18n/ch"><%= __('china') %></a></li>
+                                        <li>
+                                            <a href="/lang/en">
+                                                <img src="/img/flag.png" alt="">
+                                                <span><%= __('english') %></span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/lang/ch">
+                                                <img src="/img/ch.png" alt="">
+                                                <span><%= __('china') %></span>
+                                            </a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>

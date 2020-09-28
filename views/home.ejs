@@ -82,13 +82,13 @@
                 <form id="search" action="/search" method="POST" class="filter-form">
                     <div class="first-row row">
                         <select name="type">
-                            <option value=""><%= __('property_type') %></option>
-                            <option value="Villa"><%= __('villa') %></option>
-                            <option value="TownHose"><%= __('town_house') %></option>
-                            <option value="Apartment"><%= __('apartment') %></option>
+                            <option value="selected disabled"><%= __('property_type') %></option>
+                            <option value="villa"><%= __('villa') %></option>
+                            <option value="townHouse"><%= __('town_house') %></option>
+                            <option value="apartment"><%= __('apartment') %></option>
                         </select>
                         <select name="room">
-                            <option value=""><%= __('bedroom') %></option>
+                            <option value="selected disabled"><%= __('bedroom') %></option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -97,7 +97,7 @@
                             <option value="6">6+</option>
                         </select>
                         <select name="bath">
-                            <option value=""><%= __('bathroom') %></option>
+                            <option value="selected disabled"><%= __('bathroom') %></option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -106,10 +106,10 @@
                             <option value="6">6+</option>
                         </select>
                         <select name="furniture_type">
-                            <option value=""><%= __('furniture_type') %></option>
-                            <option value="Villa"><%= __('unfurnished') %></option>
-                            <option value="TownHose"><%= __('furnished') %></option>
-                            <option value="Apartment"><%= __('semi_furnished') %></option>
+                            <option value="selected disabled>"><%= __('furniture_type') %></option>
+                            <option value="villa"><%= __('unfurnished') %></option>
+                            <option value="townHose"><%= __('furnished') %></option>
+                            <option value="apartment"><%= __('semi_furnished') %></option>
                         </select>
                     </div>
                     <div class="second-row row">

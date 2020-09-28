@@ -1,31 +1,31 @@
 <!-- Property Details Hero Section Begin -->
-<section class="pd-hero-section set-bg" data-setbg="/img/<%= flat[0].feature_image %>">
+<section class="pd-hero-section set-bg" data-setbg="/img/<%= property[0].feature_image %>">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 offset-lg-2">
                 <div class="pd-hero-text">
-                    <p class="room-location"><i class="icon_pin"></i> <%= flat[0].location %></p>
+                    <p class="room-location"><i class="icon_pin"></i> <%= property[0].location %></p>
                     <h2>Villa 9721 Glen Creek</h2>
                     <div class="room-price">
                         <span>Start Form:</span>
-                        <p>$<%= flat[0].price %></p>
+                        <p>$<%= property[0].price %></p>
                     </div>
                     <ul class="room-features">
                         <li>
                             <i class="fa fa-arrows"></i>
-                            <p><%= flat[0].space %></p>
+                            <p><%= property[0].space %></p>
                         </li>
                         <li>
                             <i class="fa fa-bed"></i>
-                            <p><%= flat[0].rooms %> Bed Room</p>
+                            <p><%= property[0].rooms %> Bed Room</p>
                         </li>
                         <li>
                             <i class="fa fa-bath"></i>
-                            <p><%= flat[0].bath %> Baths Bed</p>
+                            <p><%= property[0].bath %> Baths Bed</p>
                         </li>
                         <li>
                             <i class="fa fa-car"></i>
-                            <p><%= flat[0].garage %> Garage</p>
+                            <p><%= property[0].garage %> Garage</p>
                         </li>
                     </ul>
                 </div>
@@ -51,7 +51,7 @@
                     <div class="property-more-pic">
                         <% if(gallery.length == 0) { %>
                             <div class="product-pic-zoom">
-                                <img class="product-big-img" src="/img/<%= flat[0].feature_image %>" alt="">
+                                <img class="product-big-img" src="/img/<%= property[0].feature_image %>" alt="">
                             </div>
                         <% } else{%>
                             <div class="product-pic-zoom">
@@ -70,7 +70,7 @@
                     </div>
                     <div class="pd-desc">
                         <h4>Description</h4>
-                        <p><%= flat[0].description %></p>
+                        <p><%= property[0].description %></p>
                     </div>
                     <div class="pd-details-tab">
                         <div class="tab-item">
@@ -94,31 +94,31 @@
                                             <tbody>
                                                 <tr>
                                                     <td class="pt-name">Price</td>
-                                                    <td class="p-value">$ <%= flat[0].price %></td>
+                                                    <td class="p-value">$ <%= property[0].price %></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="pt-name">Property Type</td>
-                                                    <td class="p-value"><%= flat[0].type %></td>
+                                                    <td class="p-value"><%= property[0].type %></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="pt-name">Year Built</td>
-                                                    <td class="p-value"><%= flat[0].built_year %></td>
+                                                    <td class="p-value"><%= property[0].built_year %></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="pt-name">Bathrooms</td>
-                                                    <td class="p-value"><%= flat[0].bath %></td>
+                                                    <td class="p-value"><%= property[0].bath %></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="pt-name">Rooms</td>
-                                                    <td class="p-value"><%= flat[0].rooms %></td>
+                                                    <td class="p-value"><%= property[0].rooms %></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="pt-name">Parking lots</td>
-                                                    <td class="p-value"><%= flat[0].garage %></td>
+                                                    <td class="p-value"><%= property[0].garage %></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="pt-name">Lot area</td>
-                                                    <td class="p-value"><%= flat[0].space %></td>
+                                                    <td class="p-value"><%= property[0].space %></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -158,7 +158,7 @@
                                 </div>
                                 <div class="tab-pane fade" id="tab-2" role="tabpanel">
                                     <div class="pd-table-desc">
-                                        <p><%= flat[0].description %></p>
+                                        <p><%= property[0].description %></p>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="tab-3" role="tabpanel">
