@@ -73,6 +73,32 @@ app.get("/lang/:locale", function (req, res) {
   res.redirect('back');
 });
 
+// app.use(function(req, res, next){
+//   const setting = []; 
+//   setting['vision'] = "fsadasd asdsa d";
+//   setting['story'] = "fsadasd asdsa d";
+//   res.locals.settings = setting;
+//   next();
+// });
+
+
+app.use(function(req, res, next){
+  const array = [];
+  const myquery = "SELECT name, value from site_settings WHERE lang = " + "'"+res.locals.current_locale+"'"
+    con.query(myquery, (err, settings) => {  
+        if (err) throw err;  
+        if(settings.length > 0){
+            settings.forEach(element => {
+              array[element.name] = element.value;
+            });
+        }
+    });
+  res.locals.settings = array;
+  next();
+});
+
+
+
 // Routes
 app.use('/', require('./routes/home'))
 app.use('/dashboard', require('./routes/dashboard'))
