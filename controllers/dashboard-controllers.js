@@ -2,6 +2,7 @@ const bcrypt = require('bcryptjs')
 const passport = require('passport')
 const con = require('../app')
 const { validationResult } = require('express-validator');
+const date = require('date-and-time');
 
 
 const register = async (req, res) => {
@@ -98,62 +99,102 @@ const add_property = async (req, res) => {
     res.render('dashboard/add_property', { name:'req.user.name', layout: 'dashboard/dashboard_layout' })
 };
 
-const save_property = async (req, res) => {
-    // console.log(req.body);
-    const errors = validationResult(req); 
-    console.log(errors);
-    // const { name, email, password, password2 } = req.body;
-    // let errors = [];
-    // if(!name || !email || !password || !password2){
-    //     errors.push({msg:'Please fill in all the fields'});
-    // }
-    // if(password !== password2){
-    //     errors.push({msg:'Passwords do not match'});
-    // }
-    // if(password.length < 6){
-    //     errors.push({msg:'Passwords must be at least 6 characters long'});
-    // }
-    // if(errors.length > 0){
-    //     res.render('dashboard/register', {
-    //         errors,
-    //         name,
-    //         email,
-    //         password,
-    //         password2
-    //     })
-    // }
-    // else{
-    //     const myquery = "SELECT * FROM user WHERE email = " + "'"+email+"'"
-    //     con.query(myquery, (err, user) => {  
-    //         if (err) throw err;  
-    //         if(user.length > 0){
-    //             errors.push({msg:'Email already registered'});
-    //             res.render('dashboard/register', {
-    //                 errors,
-    //                 name,
-    //                 email,
-    //                 password,
-    //                 password2
-    //             })
-    //         }
-    //         else{
-    //             // Hash password
-    //             bcrypt.genSalt(10, (err, salt) => 
-    //                bcrypt.hash(password, salt, (err,hash) => {
-    //                    if(err) throw err;
-    //                    encryptedpassword = hash;
-    //                    const myquery = "INSERT INTO user (name, email, password) VALUES ('"+name+"', '"+email+"', '"+hash+"')";
-    //                     con.query(myquery, function (err, result) {  
-    //                         if (err) throw err; 
-    //                         req.flash('success_msg', 'You are registered.') 
-    //                         res.redirect('/dashboard/login')
-    //                     });
-    //                }) 
-    //             )
-    //         }  
-    //     });
-    // }
+const add_agent = async (req, res) => {
+    res.render('dashboard/add_agent', { name:'req.user.name', layout: 'dashboard/dashboard_layout' })
 };
+
+const add_partner = async (req, res) => {
+    res.render('dashboard/add_partner', { name:'req.user.name', layout: 'dashboard/dashboard_layout' })
+};
+
+const save_property = async (req, res) => {
+    const { space, rooms, bath, garage, price, location, description, 
+        small_desc, amenities, type, built_year, feature_image } = req.body;
+    
+    const myquery = 
+    "INSERT INTO property (space, rooms, bath, garage, price, location, description, small_desc, amenities, type, built_year, feature_image, lang) VALUES ('"+space+"', '"+rooms+"', '"+bath+"', '"+garage+"', '"+price+"', '"+location+"', '"+description+"', '"+small_desc+"', '"+amenities+"', '"+type+"', '"+built_year+"', '"+feature_image+"', '"+res.locals.current_locale+"')";
+    con.query(myquery, function (err, result) {  
+        if (err) throw err; 
+        // req.flash('success_msg', 'You are registered.') 
+        // res.redirect('/dashboard/add_property')
+    });
+};
+
+const save_agent = async (req, res) => {
+    console.log(req.body)
+    const { name, facebook, twitter, instagram, role, phone, image } = req.body;
+    
+    const myquery = 
+    "INSERT INTO agents (name, facebook, twitter, instagram, role, phone, image) VALUES ('"+name+"', '"+facebook+"', '"+twitter+"', '"+instagram+"', '"+role+"', '"+phone+"', '"+image+"')";
+    con.query(myquery, function (err, result) {  
+        if (err) throw err; 
+        // req.flash('success_msg', 'You are registered.') 
+        // res.redirect('/dashboard/add_property')
+    });
+};
+
+const save_partner = async (req, res) => {
+    console.log(req.body)
+    const { name, image } = req.body;
+    
+    const myquery = 
+    "INSERT INTO partners (name, image) VALUES ('"+name+"', '"+image+"')";
+    con.query(myquery, function (err, result) {  
+        if (err) throw err; 
+        // req.flash('success_msg', 'You are registered.') 
+        // res.redirect('/dashboard/add_property')
+    });
+};
+
+const settings = async (req, res) => {
+    const en_settings = [];
+    const ch_settings = [];
+    const myquery = "SELECT id, name, value, lang from site_settings"
+    con.query(myquery, (err, settings) => {  
+        if (err) throw err;  
+        if(settings.length > 0){
+            settings.forEach(element => {
+                if(element.lang == 'en')
+                    en_settings[element.id] = element;
+                else
+                    ch_settings[element.id] = element;
+            });
+            res.render('dashboard/settings' ,{en_settings:en_settings, ch_settings:ch_settings, name:'req.user.name', layout: 'dashboard/dashboard_layout' })
+        }
+    });
+};
+
+const update_settings = async (req, res) => {
+    for (var key in req.body){
+        const myquery = "update site_settings set value = '"+req.body[key]+"' where id = '"+key+"' "
+        con.query(myquery, (err, result) => {  
+            if (err) throw err;
+            console.log(result)
+        });
+    }
+};
+
+const agent_list = async (req, res) => {
+    const myquery = "SELECT * FROM agents"
+    con.query(myquery, (err, result) => {  
+        if (err) throw err;  
+        if(result.length > 0){
+            res.render('dashboard/agent_list' ,{agent_list:result, name:'req.user.name', layout: 'dashboard/dashboard_layout' })
+        }
+    });
+    // res.render('dashboard/agent_list' ,{agent_list:[], name:'req.user.name', layout: 'dashboard/dashboard_layout' })
+};
+
+const partner_list = async (req, res) => {
+    const myquery = "SELECT * FROM partners"
+    con.query(myquery, (err, result) => {  
+        if (err) throw err;  
+        if(result.length > 0){
+            res.render('dashboard/partner_list' ,{partner_list:result, name:'req.user.name', layout: 'dashboard/dashboard_layout' })
+        }
+    });
+};
+
 
 exports.register = register;
 exports.login_get = login_get;
@@ -162,5 +203,13 @@ exports.logout = logout;
 exports.property_list = property_list;
 exports.dashboard = dashboard;
 exports.add_property = add_property;
+exports.add_agent = add_agent;
+exports.add_partner = add_partner;
 exports.save_property = save_property;
 exports.login = login;
+exports.settings = settings;
+exports.update_settings = update_settings;
+exports.agent_list = agent_list;
+exports.partner_list = partner_list;
+exports.save_agent = save_agent;
+exports.save_partner = save_partner;

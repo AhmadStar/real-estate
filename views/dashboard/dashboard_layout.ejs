@@ -187,10 +187,74 @@
           <li class="nav-item">
             <a href="/dashboard/property_list" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
-              <p>
-                Widgets
-                <span class="right badge badge-danger">New</span>
-              </p>
+              <p>Widgets<span class="right badge badge-danger">New</span></p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="" class="nav-link">
+              <i class="nav-icon fas fa-home"></i>
+              <p>Property<i class="right fas fa-angle-left"></i></p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/dashboard/property_list" class="nav-link">
+                  <i class="fas fa-bars"></i>
+                  <p>Property List</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/dashboard/add_property" class="nav-link">
+                  <i class="fas fa-plus"></i>
+                  <p>Add Property</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="" class="nav-link">
+              <i class="nav-icon fas fa-user"></i>
+              
+              <p>Agents<i class="right fas fa-angle-left"></i></p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/dashboard/agent_list" class="nav-link">
+                  <i class="fas fa-users"></i>
+                  <p>Agent List</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/dashboard/add_agent" class="nav-link">
+                  <i class="fas fa-user-plus"></i>
+                  <p>Add Agent</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="" class="nav-link">
+              <i class="nav-icon fa fas fa-handshake"></i>
+              <p>Partners<i class="right fas fa-angle-left"></i></p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/dashboard/partner_list" class="nav-link">
+                  <i class="fas fa-users"></i>
+                  <p>Partner List</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/dashboard/add_partner" class="nav-link">
+                  <i class="fas fa-user-plus"></i>
+                  <p>Add Partner</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="/dashboard/settings" class="nav-link">
+              <i class="nav-icon fas fa-cog"></i>
+              <p>Settings</p>
             </a>
           </li>
         </ul>
@@ -256,9 +320,14 @@
 <script src="/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
 <!-- Tempusdominus Bootstrap 4 -->
 <script src="/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- DataTables -->
+<script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="../../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="../../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 
 <!-- Custom Js -->
-<!-- <script src="/dist/js/pages/functions.js"></script> -->
+<script src="/js/functions.js"></script>
 <!-- Page script -->
 <script>
   

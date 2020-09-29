@@ -46,7 +46,14 @@
 	"call": "Call",
 	"china": "China",
 	"english": "English",
-	"404": "the page you requested could not found"
-
-	
+	"404": "the page you requested could not found",
+	"find_the_perfect": "FIND THE PERFECT",
+	"real_state_agent_near_you": "Real Estate Agent Near You",
+	"top_property_foru": "Top Property For You",
+	"top_properties": "Top Properties",
+	"view_all_property": "View All Property",
+	"we_are_to_help_you": "WE ARE TO HELP YOU",
+	"our_agents": "Our Agents",
+	"blogevents": "BLOG & EVENTS",
+	"newslatest": "News Latest"
 }

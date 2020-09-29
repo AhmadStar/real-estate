@@ -1,5 +1,4 @@
 {
-	"404": "找不到您要求的页面",
 	"home": "家",
 	"property": "屬性",
 	"agets": "年齡",
@@ -47,5 +46,14 @@
 	"call": "呼叫",
 	"china": "中国",
 	"english": "英语",
-	"title": "title"
+	"404": "找不到您要求的页面",
+	"find_the_perfect": "寻找完美",
+	"real_state_agent_near_you": "您附近的房地产经纪人",
+	"top_property_foru": "最适合您的物业",
+	"top_properties": "顶级物业",
+	"view_all_property": "查看所有财产",
+	"we_are_to_help_you": "我们将帮助您",
+	"our_agents": "我们的代理商",
+	"blogevents": "博客与活动",
+	"newslatest": "最新消息"
 }

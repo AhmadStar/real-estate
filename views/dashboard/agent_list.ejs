@@ -3,12 +3,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0 text-dark">Dashboard v2</h1>
+          <h1 class="m-0 text-dark">Agent List</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Dashboard v2</li>
+            <li class="breadcrumb-item active">Agent List</li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -23,7 +23,7 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">List of all propertys</h3>
+              <h3 class="card-title">List of all agents</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -31,27 +31,28 @@
                 <thead>
                 <tr>
                   <th>id</th>
-                  <th>space</th>
-                  <th>rooms</th>
-                  <th>price</th>
-                  <th>description</th>
-                  <th>Actions</th>
+                  <th>name</th>
+                  <th>image</th>
+                  <th>facebook</th>
+                  <th>twitter</th>
+                  <th>instagram</th>
+                  <th>phone</th>
+                  <th>role</th>
+                  <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                  <% result.forEach(function(row) { %>
+                  <% agent_list.forEach(function(row) { %>
                       <tr>
                         <td><%= row.id %></td>
-                        <td><%= row.space %></td>
-                        <td><%= row.rooms %></td>
-                        <td><%= row.price %></td>
-                        <td><%= row.description %></td>
+                        <td><%= row.name %></td>
+                        <td><%= row.image %></td>
+                        <td><%= row.facebook %></td>
+                        <td><%= row.twitter %></td>
+                        <td><%= row.instagram %></td>
+                        <td><%= row.phone %></td>
+                        <td><%= row.role %></td>
                         <td class="project-actions text-right">
-                          <a class="btn btn-primary btn-sm" href="#">
-                              <i class="fas fa-folder">
-                              </i>
-                              View
-                          </a>
                           <a class="btn btn-info btn-sm" href="#">
                               <i class="fas fa-pencil-alt">
                               </i>
