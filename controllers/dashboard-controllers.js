@@ -4,6 +4,9 @@ const con = require('../app')
 const { validationResult } = require('express-validator');
 const date = require('date-and-time');
 
+const dashboard = async (req, res) => {
+    res.render('dashboard/dashboard', { name:'req.user.name', layout: 'dashboard/dashboard_layout' })
+};
 
 const register = async (req, res) => {
   const { name, email, password, password2 } = req.body;
@@ -65,7 +68,7 @@ const login = async (req, res, next) => {
         failureRedirect:'/dashboard/login',
         failureFlash:true 
     })(req, res, next)
-  };
+};
 
 const login_get = (req, res) => {
     res.render('dashboard/login', { layout: 'layout' ,title:'Login'})
@@ -91,20 +94,8 @@ const property_list = async (req, res) => {
     });
 };
 
-const dashboard = async (req, res) => {
-    res.render('dashboard/dashboard', { name:'req.user.name', layout: 'dashboard/dashboard_layout' })
-};
-
 const add_property = async (req, res) => {
     res.render('dashboard/add_property', { name:'req.user.name', layout: 'dashboard/dashboard_layout' })
-};
-
-const add_agent = async (req, res) => {
-    res.render('dashboard/add_agent', { name:'req.user.name', layout: 'dashboard/dashboard_layout' })
-};
-
-const add_partner = async (req, res) => {
-    res.render('dashboard/add_partner', { name:'req.user.name', layout: 'dashboard/dashboard_layout' })
 };
 
 const save_property = async (req, res) => {
@@ -120,12 +111,39 @@ const save_property = async (req, res) => {
     });
 };
 
-const save_agent = async (req, res) => {
-    console.log(req.body)
-    const { name, facebook, twitter, instagram, role, phone, image } = req.body;
+const partner_list = async (req, res) => {
+    const myquery = "SELECT * FROM partners"
+    con.query(myquery, (err, result) => {  
+        if (err) throw err;  
+        // if(result.length > 0){
+            res.render('dashboard/partner_list' ,{partner_list:result, name:'req.user.name', layout: 'dashboard/dashboard_layout' })
+        // }
+    });
+};
+
+const add_partner = async (req, res) => {
+    res.render('dashboard/add_partner', { name:'req.user.name', layout: 'dashboard/dashboard_layout' })
+};
+
+const save_partner = async (req, res) => {
+    let errors = [];
+    const validation = validationResult(req)
+    if (!validation.isEmpty()) {
+        
+        validation.errors.forEach(element => {
+            errors.push({msg: element.param+' '+element.msg});
+        });
+
+        return res.render('dashboard/add_partner', {
+            errors,
+            layout: 'dashboard/dashboard_layout',
+            name: 'test'
+        })
+      }
+    const { name, image } = req.body;
     
     const myquery = 
-    "INSERT INTO agents (name, facebook, twitter, instagram, role, phone, image) VALUES ('"+name+"', '"+facebook+"', '"+twitter+"', '"+instagram+"', '"+role+"', '"+phone+"', '"+image+"')";
+    "INSERT INTO partners (name, image) VALUES ('"+name+"', '"+image+"')";
     con.query(myquery, function (err, result) {  
         if (err) throw err; 
         // req.flash('success_msg', 'You are registered.') 
@@ -133,12 +151,40 @@ const save_agent = async (req, res) => {
     });
 };
 
-const save_partner = async (req, res) => {
-    console.log(req.body)
-    const { name, image } = req.body;
+const agent_list = async (req, res) => {
+    const myquery = "SELECT * FROM agents"
+    con.query(myquery, (err, result) => {  
+        if (err) throw err;  
+        // if(result.length > 0){
+            res.render('dashboard/agent_list' ,{agent_list:result, name:'req.user.name', layout: 'dashboard/dashboard_layout' })
+        // }
+    });
+    // res.render('dashboard/agent_list' ,{agent_list:[], name:'req.user.name', layout: 'dashboard/dashboard_layout' })
+};
+
+const add_agent = async (req, res) => {
+    res.render('dashboard/add_agent', { name:'req.user.name', layout: 'dashboard/dashboard_layout' })
+};
+
+const save_agent = async (req, res) => {
+    let errors = [];
+    const validation = validationResult(req)
+    if (!validation.isEmpty()) {
+        
+        validation.errors.forEach(element => {
+            errors.push({msg: element.param+' '+element.msg});
+        });
+
+        return res.render('dashboard/add_agent', {
+            errors,
+            layout: 'dashboard/dashboard_layout',
+            name: 'test'
+        })
+      }
+    const { name, facebook, twitter, instagram, role, phone, image, brief } = req.body;
     
     const myquery = 
-    "INSERT INTO partners (name, image) VALUES ('"+name+"', '"+image+"')";
+    "INSERT INTO agents (name, facebook, twitter, instagram, role, phone, image, brief) VALUES ('"+name+"', '"+facebook+"', '"+twitter+"', '"+instagram+"', '"+role+"', '"+phone+"', '"+image+"', '"+brief+"')";
     con.query(myquery, function (err, result) {  
         if (err) throw err; 
         // req.flash('success_msg', 'You are registered.') 
@@ -174,42 +220,30 @@ const update_settings = async (req, res) => {
     }
 };
 
-const agent_list = async (req, res) => {
-    const myquery = "SELECT * FROM agents"
-    con.query(myquery, (err, result) => {  
-        if (err) throw err;  
-        if(result.length > 0){
-            res.render('dashboard/agent_list' ,{agent_list:result, name:'req.user.name', layout: 'dashboard/dashboard_layout' })
-        }
-    });
-    // res.render('dashboard/agent_list' ,{agent_list:[], name:'req.user.name', layout: 'dashboard/dashboard_layout' })
-};
+exports.dashboard = dashboard;
 
-const partner_list = async (req, res) => {
-    const myquery = "SELECT * FROM partners"
-    con.query(myquery, (err, result) => {  
-        if (err) throw err;  
-        if(result.length > 0){
-            res.render('dashboard/partner_list' ,{partner_list:result, name:'req.user.name', layout: 'dashboard/dashboard_layout' })
-        }
-    });
-};
-
-
+// Auth 
 exports.register = register;
 exports.login_get = login_get;
 exports.register_get = register_get;
 exports.logout = logout;
-exports.property_list = property_list;
-exports.dashboard = dashboard;
-exports.add_property = add_property;
-exports.add_agent = add_agent;
-exports.add_partner = add_partner;
-exports.save_property = save_property;
 exports.login = login;
+
+// Properties CRUD
+exports.property_list = property_list;
+exports.add_property = add_property;
+exports.save_property = save_property;
+
+// Partners CRUD
+exports.partner_list = partner_list;
+exports.add_partner = add_partner;
+exports.save_partner = save_partner;
+
+// Agents CRUD
+exports.agent_list = agent_list;
+exports.add_agent = add_agent;
+exports.save_agent = save_agent;
+
+// Settings
 exports.settings = settings;
 exports.update_settings = update_settings;
-exports.agent_list = agent_list;
-exports.partner_list = partner_list;
-exports.save_agent = save_agent;
-exports.save_partner = save_partner;

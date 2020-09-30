@@ -30,6 +30,7 @@
           </div>
         </div>
         <div class="card-body">
+          <% include ./partials/messages %>
           <div class="form-group">
             <label for="name">Agent Name</label>
             <input type="text" name="name" id="name" class="form-control">
@@ -60,6 +61,10 @@
               <input type="file" name="image" class="custom-file-input" id="image">
               <label class="custom-file-label" for="image">Choose image</label>
             </div>
+          </div>
+          <div class="form-group">
+            <label for="price">Brief</label>
+            <textarea id="brief" name="brief" class="form-control" rows="4"></textarea>
           </div>
         </div>
         <!-- /.card-body -->
