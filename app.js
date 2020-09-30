@@ -82,10 +82,10 @@ app.get("/lang/:locale", function (req, res) {
 // });
 
 
-app.use(function(req, res, next){
+app.use(async function(req, res, next){
   const array = [];
   const myquery = "SELECT name, value from site_settings WHERE lang = " + "'"+res.locals.current_locale+"'"
-    con.query(myquery, (err, settings) => {  
+  await con.query(myquery, (err, settings) => {  
         if (err) throw err;  
         if(settings.length > 0){
             settings.forEach(element => {
@@ -96,8 +96,6 @@ app.use(function(req, res, next){
   res.locals.settings = array;
   next();
 });
-
-
 
 // Routes
 app.use('/', require('./routes/home'))

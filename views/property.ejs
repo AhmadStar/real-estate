@@ -7,7 +7,7 @@
                     <p class="room-location"><i class="icon_pin"></i> <%= property[0].location %></p>
                     <h2>Villa 9721 Glen Creek</h2>
                     <div class="room-price">
-                        <span>Start Form:</span>
+                        <span><%= __('start_from') %>:</span>
                         <p>$<%= property[0].price %></p>
                     </div>
                     <ul class="room-features">
@@ -17,15 +17,15 @@
                         </li>
                         <li>
                             <i class="fa fa-bed"></i>
-                            <p><%= property[0].rooms %> Bed Room</p>
+                            <p><%= property[0].rooms %> <%= __('bed_room') %></p>
                         </li>
                         <li>
                             <i class="fa fa-bath"></i>
-                            <p><%= property[0].bath %> Baths Bed</p>
+                            <p><%= property[0].bath %> <%= __('bathroom') %></p>
                         </li>
                         <li>
                             <i class="fa fa-car"></i>
-                            <p><%= property[0].garage %> Garage</p>
+                            <p><%= property[0].garage %> <%= __('garage') %></p>
                         </li>
                     </ul>
                 </div>
@@ -69,20 +69,20 @@
                         </div>
                     </div>
                     <div class="pd-desc">
-                        <h4>Description</h4>
+                        <h4><%= __('description') %></h4>
                         <p><%= property[0].description %></p>
                     </div>
                     <div class="pd-details-tab">
                         <div class="tab-item">
                             <ul class="nav" role="tablist">
                                 <li>
-                                    <a class="active" data-toggle="tab" href="#tab-1" role="tab">Overview</a>
+                                    <a class="active" data-toggle="tab" href="#tab-1" role="tab"><%= __('overview') %></a>
                                 </li>
                                 <li>
-                                    <a data-toggle="tab" href="#tab-2" role="tab">Description</a>
+                                    <a data-toggle="tab" href="#tab-2" role="tab"><%= __('description') %></a>
                                 </li>
                                 <li>
-                                    <a data-toggle="tab" href="#tab-3" role="tab">Amenities</a>
+                                    <a data-toggle="tab" href="#tab-3" role="tab"><%= __('amenities') %></a>
                                 </li>
                             </ul>
                         </div>
@@ -93,23 +93,23 @@
                                         <table class="left-table">
                                             <tbody>
                                                 <tr>
-                                                    <td class="pt-name">Price</td>
+                                                    <td class="pt-name"><%= __('price') %></td>
                                                     <td class="p-value">$ <%= property[0].price %></td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="pt-name">Property Type</td>
+                                                    <td class="pt-name"><%= __('property_type') %></td>
                                                     <td class="p-value"><%= property[0].type %></td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="pt-name">Year Built</td>
+                                                    <td class="pt-name"><%= __('built_year') %></td>
                                                     <td class="p-value"><%= property[0].built_year %></td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="pt-name">Bathrooms</td>
+                                                    <td class="pt-name"><%= __('bathroom') %></td>
                                                     <td class="p-value"><%= property[0].bath %></td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="pt-name">Rooms</td>
+                                                    <td class="pt-name"><%= __('bed_room') %></td>
                                                     <td class="p-value"><%= property[0].rooms %></td>
                                                 </tr>
                                                 <tr>
@@ -125,31 +125,31 @@
                                         <table class="right-table">
                                             <tbody>
                                                 <tr>
-                                                    <td class="pt-name">Agent</td>
+                                                    <td class="pt-name"><%= __('agent') %></td>
                                                     <td class="p-value">Adam Smith</td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="pt-name">Reference</td>
+                                                    <td class="pt-name"><%= __('reference') %></td>
                                                     <td class="p-value">#2019</td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="pt-name">Contract type</td>
+                                                    <td class="pt-name"><%= __('contract_type') %></td>
                                                     <td class="p-value">Sale</td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="pt-name">Beds</td>
+                                                    <td class="pt-name"><%= __('beds') %></td>
                                                     <td class="p-value">4</td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="pt-name">Garages</td>
+                                                    <td class="pt-name"><%= __('garage') %></td>
                                                     <td class="p-value">2</td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="pt-name">Home area</td>
+                                                    <td class="pt-name"><%= __('home_area') %></td>
                                                     <td class="p-value">1200 sqft</td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="pt-name">Gara Size</td>
+                                                    <td class="pt-name"><%= __('garage_size') %></td>
                                                     <td class="p-value">200 sqft</td>
                                                 </tr>
                                             </tbody>
@@ -163,27 +163,14 @@
                                 </div>
                                 <div class="tab-pane fade" id="tab-3" role="tabpanel">
                                     <div class="pd-table-amenities">
-                                        <p>Learn how to improve your playing quality and even overall understanding
-                                            of online gaming and how you perform while playing online. Gaming online
-                                            is a huge business nowadays and that means that there are millions of
-                                            people worldwide at online game sites all the time. Many are people just
-                                            like you and me that like to play online and have fun doing it. Some of
-                                            these people enjoy it so much, that they often do not even care about
-                                            improving their skill and raising their chances of winning.</p>
-                                        <p>Learn how to improve your playing quality and even overall understanding
-                                            of online gaming and how you perform while playing online. Gaming online
-                                            is a huge business nowadays and that means that there are millions of
-                                            people worldwide at online game sites all the time. Many are people just
-                                            like you and me that like to play online and have fun doing it. Some of
-                                            these people enjoy it so much, that they often do not even care about
-                                            improving their skill and raising their chances of winning.</p>
+                                        <p><%= property[0].amenities %></p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="property-map">
-                        <h4>Map</h4>
+                        <h4><%= __('map') %></h4>
                         <div class="map-inside">
                             <iframe
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2942.5524090066037!2d-71.10245469994108!3d42.47980730490846!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e3748250c43a43%3A0xe1b9879a5e9b6657!2sWinter%20Street%20Public%20Parking%20Lot!5e0!3m2!1sen!2sbd!4v1577299251173!5m2!1sen!2sbd"
@@ -194,7 +181,7 @@
                         </div>
                     </div>
                     <div class="property-contactus">
-                        <h4>Contact Us</h4>
+                        <h4><%= __('contact_us') %></h4>
                         <div class="row">
                             <div class="col-lg-5">
                                 <div class="agent-desc">
@@ -216,10 +203,10 @@
                             </div>
                             <div class="col-lg-6 offset-lg-1">
                                 <form action="#" class="agent-contact-form">
-                                    <input type="text" placeholder="Name*">
-                                    <input type="text" placeholder="Email">
-                                    <textarea placeholder="Messages"></textarea>
-                                    <button type="submit" class="site-btn">Send Message</button>
+                                    <input type="text" placeholder="<%= __('name') %>*">
+                                    <input type="text" placeholder="<%= __('email') %>">
+                                    <textarea placeholder="<%= __('message') %>"></textarea>
+                                    <button type="submit" class="site-btn"><%= __('send_message') %></button>
                                 </form>
                             </div>
                         </div>
@@ -228,51 +215,48 @@
             </div>
             <div class="col-lg-3">
                 <div class="property-sidebar">
-                    <h4>Search Property</h4>
+                    <h4><%= __('search_property') %></h4>
                     <form action="#" class="sidebar-search">
                         <div class="sidebar-btn">
                             <div class="bt-item">
                                 <input type="radio" name="s-type" id="st-buy" checked>
-                                <label for="st-buy">Buy</label>
+                                <label for="st-buy"><%= __('by') %></label>
                             </div>
                             <div class="bt-item">
                                 <input type="radio" name="s-type" id="st-rent">
-                                <label for="st-rent">Rent</label>
+                                <label for="st-rent"><%= __('rent') %></label>
                             </div>
                         </div>
                         <select>
-                            <option value="">Locations</option>
+                            <option value=""><%= __('location') %></option>
                         </select>
                         <select>
-                            <option value="">Status</option>
+                            <option value=""><%= __('status') %></option>
                         </select>
                         <select>
-                            <option value="">No of Bedroom</option>
+                            <option value=""><%= __('no_of_beedroom') %></option>
                         </select>
                         <select>
-                            <option value="">No of Bathrooms</option>
-                        </select>
-                        <select>
-                            <option value="">No of Guest</option>
+                            <option value=""><%= __('no_of_bathrooms') %></option>
                         </select>
                         <div class="room-size-range">
                             <div class="price-text">
-                                <label for="roomsizeRangeP">Size:</label>
+                                <label for="roomsizeRangeP"><%= __('size') %>:</label>
                                 <input type="text" id="roomsizeRangeP" readonly>
                             </div>
                             <div id="roomsize-range-P" class="slider"></div>
                         </div>
                         <div class="price-range-wrap">
                             <div class="price-text">
-                                <label for="priceRangeP">Price:</label>
+                                <label for="priceRangeP"><%= __('price') %>:</label>
                                 <input type="text" id="priceRangeP" readonly>
                             </div>
                             <div id="price-range-P" class="slider"></div>
                         </div>
-                        <button type="submit" class="search-btn">Search Property</button>
+                        <button type="submit" class="search-btn"><%= __('search_property') %></button>
                     </form>
                     <div class="best-agents">
-                        <h4>Best Agents</h4>
+                        <h4><%= __('best_agents') %></h4>
                         <a href="#" class="ba-item">
                             <div class="ba-pic">
                                 <img src="/img/properties/best-agent-1.jpg" alt="">
@@ -280,7 +264,7 @@
                             <div class="ba-text">
                                 <h5>Lester Bradley</h5>
                                 <span>Company Agents</span>
-                                <p class="property-items">6 property </p>
+                                <p class="property-items">6 <%= __('property') %> </p>
                             </div>
                         </a>
                         <a href="#" class="ba-item">
@@ -290,7 +274,7 @@
                             <div class="ba-text">
                                 <h5>Janie Blair</h5>
                                 <span>Company Agents</span>
-                                <p class="property-items">6 property </p>
+                                <p class="property-items">6 <%= __('property') %> </p>
                             </div>
                         </a>
                         <a href="#" class="ba-item">
@@ -300,7 +284,7 @@
                             <div class="ba-text">
                                 <h5>Sophia Cole</h5>
                                 <span>Marketing & Ceo</span>
-                                <p class="property-items">6 property </p>
+                                <p class="property-items">6 <%= __('property') %> </p>
                             </div>
                         </a>
                     </div>

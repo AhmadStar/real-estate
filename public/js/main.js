@@ -343,10 +343,10 @@
         step: 200,
         values: [200, 999],
         slide: function (event, ui) {
-            $("#roomsizeRangeP").val("[ " + ui.values[0] + " Fqft" + " - " + ui.values[1] + " Fqft" + " ]");
+            $("#roomsizeRangeP").val("[ " + ui.values[0] + " sqft" + " - " + ui.values[1] + " sqft" + " ]");
         }
     });
-    $("#roomsizeRangeP").val("[ " + $("#roomsize-range-P").slider("values", 0) + " Fqft" + " - " + $("#roomsize-range-P").slider("values", 1) + " Fqft" + " ]");
+    $("#roomsizeRangeP").val("[ " + $("#roomsize-range-P").slider("values", 0) + " sqft" + " - " + $("#roomsize-range-P").slider("values", 1) + " sqft" + " ]");
 
     /*------------------
 		Single Product

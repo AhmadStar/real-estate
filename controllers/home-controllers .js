@@ -11,11 +11,23 @@ const home = async (req, res) => {
 };
 
 const about = (req, res) => {
-    res.render('about' ,{ layout: 'layout', title:'About Us'})
+    const myquery = "SELECT * FROM property"
+    con.query(myquery, (err, result) => {  
+        if (err) throw err;  
+        if(result.length > 0){
+            res.render('about' ,{result:result, title:'About Us'})
+        }
+    });
 };
 
 const contact = (req, res) => {
-    res.render('contact' ,{ layout: 'layout', title:'Contact'})
+    const myquery = "SELECT * FROM property"
+    con.query(myquery, (err, result) => {  
+        if (err) throw err;  
+        if(result.length > 0){
+            res.render('contact' ,{result:result, title:'Contact Us'})
+        }
+    });
 };
 
 const get_property = (req, res) => {
