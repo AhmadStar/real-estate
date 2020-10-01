@@ -8,7 +8,8 @@ var cookieParser = require('cookie-parser')
 var path = require('path');
 var i18n = require('./config/i18n');
 const HttpError = require('./config/http-error');
-
+var bodyParser = require("body-parser");
+const formidableMiddleware = require('express-formidable');
 
 const app = express()
 
@@ -37,7 +38,11 @@ app.use(expressLayouts)
 app.set('view engine', 'ejs')
 
 // Body parser
-app.use(express.urlencoded({ encoded: false }))
+// app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ encoded: true }))
+
+//
+app.use(formidableMiddleware());
 
 // cookie
 app.use(cookieParser());

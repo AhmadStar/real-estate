@@ -2,7 +2,9 @@ const bcrypt = require('bcryptjs')
 const passport = require('passport')
 const con = require('../app')
 const { validationResult } = require('express-validator');
-const date = require('date-and-time');
+const helpers = require('../config/helper');
+// let multer = require('multer');
+// let multiparty = require('multiparty');
 
 const dashboard = async (req, res) => {
     res.render('dashboard/dashboard', { name:'req.user.name', layout: 'dashboard/dashboard_layout' })
@@ -126,29 +128,72 @@ const add_partner = async (req, res) => {
 };
 
 const save_partner = async (req, res) => {
-    let errors = [];
-    const validation = validationResult(req)
-    if (!validation.isEmpty()) {
-        
-        validation.errors.forEach(element => {
-            errors.push({msg: element.param+' '+element.msg});
-        });
+    // let upload = multer({ storage: helpers.storage, fileFilter: helpers.imageFilter }).single('image');
 
-        return res.render('dashboard/add_partner', {
-            errors,
-            layout: 'dashboard/dashboard_layout',
-            name: 'test'
-        })
-      }
-    const { name, image } = req.body;
+    // upload(req, res, function(err) {
+    //     // req.file contains information of uploaded file
+    //     // req.body contains information of text fields, if there were any
+
+    //     if (req.fileValidationError) {
+    //         // return res.send(req.fileValidationError);
+    //     }
+    //     else if (!req.file) {
+    //         // return res.send('Please select an image to upload');
+    //     }
+    //     else if (err instanceof multer.MulterError) {
+    //         // return res.send(err);
+    //     }
+    //     else if (err) {
+    //         // return res.send(err);
+    //     }
+    // });
+
+    console.log(req.fields);
+    console.log(req.files);
+    // let errors = [];
+    // const validation = validationResult(req)
+    // if (!validation.isEmpty()) {
+        
+    //     validation.errors.forEach(element => {
+    //         errors.push({msg: element.param+' '+element.msg});
+    //     });
+
+    //     return res.render('dashboard/add_partner', {
+    //         errors,
+    //         layout: 'dashboard/dashboard_layout',
+    //         name: 'test'
+    //     })
+    //   }
+    // const { name, image } = req.body;
     
-    const myquery = 
-    "INSERT INTO partners (name, image) VALUES ('"+name+"', '"+image+"')";
-    con.query(myquery, function (err, result) {  
-        if (err) throw err; 
-        // req.flash('success_msg', 'You are registered.') 
-        // res.redirect('/dashboard/add_property')
-    });
+    // const myquery = 
+    // "INSERT INTO partners (name, image) VALUES ('"+name+"', '"+image+"')";
+    // con.query(myquery, function (err, result) {  
+    //     if (err) throw err; 
+    //     // req.flash('success_msg', 'You are registered.') 
+    //     // res.redirect('/dashboard/add_property')
+    // });
+
+
+    // var form = new multiparty.Form();
+    // form.parse(req, function(err, body, files) {
+    //     if (err)
+    //     return res.status(500).end();
+
+    //     req.body = body;
+
+    //     console.log(body)
+
+    //     // Validation checks
+    //     req.checkBody('name', 'name is required').notEmpty();
+
+    //     // let errors = req.validationErrors();
+
+    //     // if (errors) {
+    //     //     console.log('errors')
+    //     // } else
+    //     //     console.log('No eerror ')
+    // });
 };
 
 const agent_list = async (req, res) => {

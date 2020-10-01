@@ -78,7 +78,7 @@
 	"home_area": "家庭区",
 	"garage_size": "车库大小",
 	"search_property": "搜索物业",
-	"by": "购买",
+	"buy": "购买",
 	"rent": "出租",
 	"location": "位置",
 	"status": "状态",
@@ -86,5 +86,17 @@
 	"no_of_bathrooms": "没有浴室",
 	"best_agents": "最佳代理商",
 	"map": "地图",
-	"Property": "Property"
+	"compare": "相比",
+	"reset": "重启",
+	"filter": "过滤",
+	"properties": "属性",
+	"space": "空间",
+	"customer_rating": "客户评价",
+	"rooms": "房间",
+	"bath": "广播",
+	"type": "类型",
+	"builtyear": "建成年份",
+	"rights_reserved": "版权所有",
+	"by": "乙",
+	"copyright": "版权"
 }

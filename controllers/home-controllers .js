@@ -47,7 +47,17 @@ const get_property = (req, res) => {
     });
 };
 
+const compare = (req, res) => {
+    const myquery = "SELECT * FROM property limit 8"
+    con.query(myquery, (err, result) => {  
+        if (err) throw err;  
+        if(result.length > 0){
+            res.render('compare' ,{result:result, title:'Compare'})
+        }
+    });
+};
 exports.home = home;
 exports.about = about;
 exports.contact = contact;
 exports.get_property = get_property;
+exports.compare = compare;

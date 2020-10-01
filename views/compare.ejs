@@ -1,0 +1,84 @@
+<!-- Breadcrumb Section Begin -->
+<section class="breadcrumb-section contact-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-text">
+                    <h2><%= __('compare') %></h2>
+                    <div class="breadcrumb-option">
+                        <a href="/"><i class="fa fa-home"></i> <%= __('home') %></a>
+                        <span><%= __('compare') %></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Section Begin -->
+
+<!-- Contact Section Begin -->
+<section class="contact-section compare">
+    <div class="container-fluid">
+        <section class="cd-products-comparison-table">
+            <header>
+                <div class="actions">
+                    <a href="#0" class="reset"><%= __('reset') %></a>
+                    <a href="#0" class="filter"><%= __('filter') %></a>
+                </div>
+            </header>
+    
+            <div class="cd-products-table">
+                <div class="features">
+                    <div class="top-info"><%= __('properties') %></div>
+                    <ul class="cd-features-list">
+                        <li><%= __('space') %></li>
+                        <li><%= __('customer_rating') %></li>
+                        <li><%= __('rooms') %></li>
+                        <li><%= __('bath') %></li>
+                        <li><%= __('garage') %></li>
+                        <li><%= __('price') %></li>
+                        <!-- <li>Description</li> -->
+                        <!-- <li>Small Desc</li> -->
+                        <li><%= __('type') %></li>
+                        <!-- <li>Amenities</li> -->
+                        <li><%= __('builtyear') %></li>
+                    </ul>
+                </div> <!-- .features -->
+                
+                <div class="cd-products-wrapper">
+                    <ul class="cd-products-columns">
+                        <% result.forEach(function(row) { %>
+                        <li class="product">
+                            <div class="top-info">
+                                <div class="check"></div>
+                                <img src="img/<%= row.feature_image %>" alt="property image">
+                                <!-- <h3><%= row.small_desc %></h3> -->
+                            </div> <!-- .top-info -->
+    
+                            <ul class="cd-features-list">
+                                <li><%= row.space %></li>
+                                <li class="rate"><span>5/5</span></li>
+                                <li><%= row.rooms %></li>
+                                <li><%= row.bath %></li>
+                                <li><%= row.garage %></li>
+                                <li><%= row.price %></li>
+                                <!-- <li><%= row.description %></li> -->
+                                <!-- <li><%= row.small_desc %></li> -->
+                                <li><%= row.type %></li>
+                                <!-- <li><%= row.amenities %></li> -->
+                                <li><%= row.built_year %></li>
+                            </ul>
+                        </li> <!-- .product -->
+                        <% }) %>
+                    </ul> <!-- .cd-products-columns -->
+                </div> <!-- .cd-products-wrapper -->
+                
+                <ul class="cd-table-navigation">
+                    <li><a href="#0" class="prev inactive">Prev</a></li>
+                    <li><a href="#0" class="next">Next</a></li>
+                </ul>
+            </div> <!-- .cd-products-table -->
+        </section> <!-- .cd-products-comparison-table -->
+    </div>
+</section>
+<!-- Contact Section End -->

@@ -24,6 +24,8 @@
     <link rel="stylesheet" href="/css/magnific-popup.css" type="text/css">
     <link rel="stylesheet" href="/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="/css/style.css" type="text/css">
+    <link rel="stylesheet" href="/css/reset.css" type="text/css">
+    <link rel="stylesheet" href="/css/compare.css" type="text/css">
     <link rel="icon" type="image/png" href="/img/favicon.svg"/>
 
 </head>
@@ -271,7 +273,7 @@
             </div>
             <div class="copyright-text">
                 <p><p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | <i class="ti-heart" aria-hidden="true"></i> by <a href="https://pad-tr.com" target="_blank">PAD</a>
+                    <%= __('copyright') %> &copy;<script>document.write(new Date().getFullYear());</script> <%= __('rights_reserved') %> | <i class="ti-heart" aria-hidden="true"></i> <%= __('by') %> <a href="https://pad-tr.com" target="_blank">PAD</a>
   <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p></p>
             </div>
         </div>
@@ -287,6 +289,7 @@
     <script src="/js/jquery-ui.min.js"></script>
     <script src="/js/owl.carousel.min.js"></script>
     <script src="/js/main.js"></script>
+    <script src="js/compare.js"></script> <!-- Resource jQuery -->
 </body>
 
 </html>

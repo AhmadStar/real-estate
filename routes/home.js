@@ -24,4 +24,7 @@ router.post('/search', function(req, res, next) {
 // Get Property By Id
 router.get('/property/:id', homeController.get_property)
 
+// compare
+router.get('/compare', homeController.compare)
+
 module.exports = router
