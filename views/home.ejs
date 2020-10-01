@@ -1,7 +1,7 @@
 <!-- Hero Section Begin -->
 <section class="hero-section">
     <div class="hero-items owl-carousel">
-        <% result.forEach(function(row) { %>
+        <% hero_property.forEach(function(row) { %>
             <div class="single-hero-item set-bg" data-setbg="img/<%= row.feature_image %>">
                 <div class="container">
                     <div class="row">
@@ -40,7 +40,7 @@
     </div>
     <div class="thumbnail-pic">
         <div class="thumbs owl-carousel">
-            <% result.forEach(function(row) { %>
+            <% hero_property.forEach(function(row) { %>
                 <div class="item">
                     <img src="img/<%= row.feature_image %>" alt="">
                 </div>
@@ -69,13 +69,13 @@
                 <form id="search" action="/search" method="POST" class="filter-form">
                     <div class="first-row row">
                         <select name="type">
-                            <option value="selected disabled"><%= __('property_type') %></option>
+                            <option value=""><%= __('property_type') %></option>
                             <option value="villa"><%= __('villa') %></option>
                             <option value="townHouse"><%= __('town_house') %></option>
                             <option value="apartment"><%= __('apartment') %></option>
                         </select>
                         <select name="room">
-                            <option value="selected disabled"><%= __('bedroom') %></option>
+                            <option value=""><%= __('bedroom') %></option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -84,7 +84,7 @@
                             <option value="6">6+</option>
                         </select>
                         <select name="bath">
-                            <option value="selected disabled"><%= __('bathroom') %></option>
+                            <option value=""><%= __('bathroom') %></option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -93,7 +93,7 @@
                             <option value="6">6+</option>
                         </select>
                         <select name="furniture_type">
-                            <option value="selected disabled>"><%= __('furniture_type') %></option>
+                            <option value=""><%= __('furniture_type') %></option>
                             <option value="villa"><%= __('unfurnished') %></option>
                             <option value="townHose"><%= __('furnished') %></option>
                             <option value="apartment"><%= __('semi_furnished') %></option>
@@ -174,7 +174,7 @@
         </div>
         <div class="row">
             <div class="feature-carousel owl-carousel">
-                <% result.forEach(function(row) { %>
+                <% featured_property.forEach(function(row) { %>
                     <div class="col-lg-4">
                         <div class="feature-item">
                             <div class="fi-pic set-bg" data-setbg="img/<%= row.feature_image %>">

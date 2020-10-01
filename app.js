@@ -9,7 +9,7 @@ var path = require('path');
 var i18n = require('./config/i18n');
 const HttpError = require('./config/http-error');
 var bodyParser = require("body-parser");
-const formidableMiddleware = require('express-formidable');
+// const formidableMiddleware = require('express-formidable');
 
 const app = express()
 
@@ -42,7 +42,7 @@ app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({ encoded: true }))
 
 //
-app.use(formidableMiddleware());
+// app.use(formidableMiddleware());
 
 // cookie
 app.use(cookieParser());

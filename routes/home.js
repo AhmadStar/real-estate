@@ -13,18 +13,15 @@ router.get('/about', homeController.about)
 router.get('/contact', homeController.contact)
 
 // Search
-router.post('/search', function(req, res, next) {
-
-    console.log(req.body);
-    // console.log('test ahamd form ');
-
-
-});
+router.post('/search', homeController.search)
 
 // Get Property By Id
 router.get('/property/:id', homeController.get_property)
 
 // compare
 router.get('/compare', homeController.compare)
+
+// compare
+router.get('/property_list', homeController.property_list)
 
 module.exports = router

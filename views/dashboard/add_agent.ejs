@@ -17,7 +17,7 @@
 
 <!-- Main content -->
 <section class="content">
-  <form role="form" id="add_agent" action="/dashboard/save_agent" method="POST">
+  <form role="form" id="add_agent" action="/dashboard/save_agent" enctype="multipart/form-data" method="POST">
   <div class="row">
     <div class="col-md-6">
       <div class="card card-primary">
@@ -58,7 +58,7 @@
           <div class="form-group">
             <label for="image">Agent Image</label>
             <div class="custom-file">
-              <input type="file" name="image" class="custom-file-input" id="image">
+              <input type="file" name="image" class="custom-file-input" id="image" accept="image/png, image/jpeg">
               <label class="custom-file-label" for="image">Choose image</label>
             </div>
           </div>

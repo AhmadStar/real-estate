@@ -101,15 +101,52 @@ const add_property = async (req, res) => {
 };
 
 const save_property = async (req, res) => {
+    let errors = [];
+    const validation = validationResult(req)
+    if (!validation.isEmpty()) {
+        
+        validation.errors.forEach(element => {
+            errors.push({msg: element.param+' '+element.msg});
+        });
+
+        return res.render('dashboard/add_property', {
+            errors,
+            layout: 'dashboard/dashboard_layout',
+            name: 'test'
+        })
+      }
+    if(req.files.length == 0){
+        errors.push({msg: 'Please Upload at least one file'});
+
+        return res.render('dashboard/add_property', {
+            errors,
+            layout: 'dashboard/dashboard_layout',
+            name: 'test'
+        })
+    }
+
+    // console.log(req.files[0].filename)
+
     const { space, rooms, bath, garage, price, location, description, 
-        small_desc, amenities, type, built_year, feature_image } = req.body;
+        small_desc, amenities, type, built_year } = req.body;
     
     const myquery = 
-    "INSERT INTO property (space, rooms, bath, garage, price, location, description, small_desc, amenities, type, built_year, feature_image, lang) VALUES ('"+space+"', '"+rooms+"', '"+bath+"', '"+garage+"', '"+price+"', '"+location+"', '"+description+"', '"+small_desc+"', '"+amenities+"', '"+type+"', '"+built_year+"', '"+feature_image+"', '"+res.locals.current_locale+"')";
+    "INSERT INTO property (space, rooms, bath, garage, price, location, description, small_desc, amenities, type, built_year, feature_image, lang) VALUES ('"+space+"', '"+rooms+"', '"+bath+"', '"+garage+"', '"+price+"', '"+location+"', '"+description+"', '"+small_desc+"', '"+amenities+"', '"+type+"', '"+built_year+"', '"+req.files[0].filename+"', '"+res.locals.current_locale+"')";
     con.query(myquery, function (err, result) {  
-        if (err) throw err; 
-        // req.flash('success_msg', 'You are registered.') 
-        // res.redirect('/dashboard/add_property')
+        if (err) throw err;
+        console.log(result.insertId)
+        if(req.files.length > 1){
+            req.files.shift();
+            req.files.forEach(element => { 
+                console.log(element);
+                const myquery = "INSERT INTO images (name , property_id) VALUES ('"+element.filename+"', '"+result.insertId+"')";
+                con.query(myquery, (err, result) => {  
+                    if (err) throw err;
+                });
+              }); 
+            req.flash('success_msg', 'Property saved Successfully.') 
+            res.redirect('/dashboard/add_property')
+        }
     });
 };
 
@@ -128,72 +165,30 @@ const add_partner = async (req, res) => {
 };
 
 const save_partner = async (req, res) => {
-    // let upload = multer({ storage: helpers.storage, fileFilter: helpers.imageFilter }).single('image');
-
-    // upload(req, res, function(err) {
-    //     // req.file contains information of uploaded file
-    //     // req.body contains information of text fields, if there were any
-
-    //     if (req.fileValidationError) {
-    //         // return res.send(req.fileValidationError);
-    //     }
-    //     else if (!req.file) {
-    //         // return res.send('Please select an image to upload');
-    //     }
-    //     else if (err instanceof multer.MulterError) {
-    //         // return res.send(err);
-    //     }
-    //     else if (err) {
-    //         // return res.send(err);
-    //     }
-    // });
-
-    console.log(req.fields);
-    console.log(req.files);
-    // let errors = [];
-    // const validation = validationResult(req)
-    // if (!validation.isEmpty()) {
+    let errors = [];
+    const validation = validationResult(req)
+    if (!validation.isEmpty()) {
         
-    //     validation.errors.forEach(element => {
-    //         errors.push({msg: element.param+' '+element.msg});
-    //     });
+        validation.errors.forEach(element => {
+            errors.push({msg: element.param+' '+element.msg});
+        });
 
-    //     return res.render('dashboard/add_partner', {
-    //         errors,
-    //         layout: 'dashboard/dashboard_layout',
-    //         name: 'test'
-    //     })
-    //   }
-    // const { name, image } = req.body;
+        return res.render('dashboard/add_partner', {
+            errors,
+            layout: 'dashboard/dashboard_layout',
+            name: 'test'
+        })
+      }
+    const { name } = req.body;
     
-    // const myquery = 
-    // "INSERT INTO partners (name, image) VALUES ('"+name+"', '"+image+"')";
-    // con.query(myquery, function (err, result) {  
-    //     if (err) throw err; 
-    //     // req.flash('success_msg', 'You are registered.') 
-    //     // res.redirect('/dashboard/add_property')
-    // });
+    const myquery = 
+    "INSERT INTO partners (name, image) VALUES ('"+name+"', '"+req.file.originalname+"')";
+    con.query(myquery, function (err, result) {  
+        if (err) throw err; 
+        req.flash('success_msg', 'Partner Added Successfully.') 
+        res.redirect('/dashboard/add_partner')
+    });
 
-
-    // var form = new multiparty.Form();
-    // form.parse(req, function(err, body, files) {
-    //     if (err)
-    //     return res.status(500).end();
-
-    //     req.body = body;
-
-    //     console.log(body)
-
-    //     // Validation checks
-    //     req.checkBody('name', 'name is required').notEmpty();
-
-    //     // let errors = req.validationErrors();
-
-    //     // if (errors) {
-    //     //     console.log('errors')
-    //     // } else
-    //     //     console.log('No eerror ')
-    // });
 };
 
 const agent_list = async (req, res) => {
@@ -226,14 +221,14 @@ const save_agent = async (req, res) => {
             name: 'test'
         })
       }
-    const { name, facebook, twitter, instagram, role, phone, image, brief } = req.body;
+    const { name, facebook, twitter, instagram, role, phone, brief } = req.body;
     
     const myquery = 
-    "INSERT INTO agents (name, facebook, twitter, instagram, role, phone, image, brief) VALUES ('"+name+"', '"+facebook+"', '"+twitter+"', '"+instagram+"', '"+role+"', '"+phone+"', '"+image+"', '"+brief+"')";
+    "INSERT INTO agents (name, facebook, twitter, instagram, role, phone, image, brief) VALUES ('"+name+"', '"+facebook+"', '"+twitter+"', '"+instagram+"', '"+role+"', '"+phone+"', '"+req.file.originalname+"', '"+brief+"')";
     con.query(myquery, function (err, result) {  
         if (err) throw err; 
-        // req.flash('success_msg', 'You are registered.') 
-        // res.redirect('/dashboard/add_property')
+        req.flash('success_msg', 'Agent Added Successfully.') 
+        res.redirect('/dashboard/add_agent')
     });
 };
 

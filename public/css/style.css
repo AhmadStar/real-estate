@@ -631,6 +631,16 @@ ul, ol {
 	cursor: pointer;
 }
 
+input.search-btn {
+	width: 247px;
+	font-size: 16px;
+	height: 46px;
+	background: #2cbdb8;
+	color: #ffffff;
+	border: none;
+	border: 1px solid #2cbdb8;
+	cursor: pointer;
+}
 
 .ui-widget.ui-widget-content {
 	background: #E9E9E9;

@@ -216,7 +216,7 @@
             <div class="col-lg-3">
                 <div class="property-sidebar">
                     <h4><%= __('search_property') %></h4>
-                    <form action="#" class="sidebar-search">
+                    <form action="/search" method="POST" class="sidebar-search">
                         <div class="sidebar-btn">
                             <div class="bt-item">
                                 <input type="radio" name="s-type" id="st-buy" checked>
@@ -227,33 +227,51 @@
                                 <label for="st-rent"><%= __('rent') %></label>
                             </div>
                         </div>
-                        <select>
-                            <option value=""><%= __('location') %></option>
+                        <select name="type">
+                            <option value=""><%= __('property_type') %></option>
+                            <option value="villa"><%= __('villa') %></option>
+                            <option value="townHouse"><%= __('town_house') %></option>
+                            <option value="apartment"><%= __('apartment') %></option>
                         </select>
-                        <select>
-                            <option value=""><%= __('status') %></option>
+                        <select name="room">
+                            <option value=""><%= __('bedroom') %></option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6+</option>
                         </select>
-                        <select>
-                            <option value=""><%= __('no_of_beedroom') %></option>
+                        <select name="bath">
+                            <option value=""><%= __('bathroom') %></option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6+</option>
                         </select>
-                        <select>
-                            <option value=""><%= __('no_of_bathrooms') %></option>
+                        <select name="furniture_type">
+                            <option value=""><%= __('furniture_type') %></option>
+                            <option value="villa"><%= __('unfurnished') %></option>
+                            <option value="townHose"><%= __('furnished') %></option>
+                            <option value="apartment"><%= __('semi_furnished') %></option>
                         </select>
                         <div class="room-size-range">
                             <div class="price-text">
                                 <label for="roomsizeRangeP"><%= __('size') %>:</label>
-                                <input type="text" id="roomsizeRangeP" readonly>
+                                <input type="text" name="space" id="roomsizeRangeP" readonly>
                             </div>
                             <div id="roomsize-range-P" class="slider"></div>
                         </div>
                         <div class="price-range-wrap">
                             <div class="price-text">
                                 <label for="priceRangeP"><%= __('price') %>:</label>
-                                <input type="text" id="priceRangeP" readonly>
+                                <input type="text" name="price" id="priceRangeP" readonly>
                             </div>
                             <div id="price-range-P" class="slider"></div>
                         </div>
-                        <button type="submit" class="search-btn"><%= __('search_property') %></button>
+                        <input type="submit" value="<%= __('search') %>" class="search-btn" />
                     </form>
                     <div class="best-agents">
                         <h4><%= __('best_agents') %></h4>

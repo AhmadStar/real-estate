@@ -17,7 +17,7 @@
 
 <!-- Main content -->
 <section class="content">
-  <form role="form" id="add_property" action="/dashboard/save_property" method="POST">
+  <form role="form" id="add_property" action="/dashboard/save_property" enctype="multipart/form-data" method="POST">
   <div class="row">
     <div class="col-md-6">
       <div class="card card-primary">
@@ -74,6 +74,7 @@
           </div>
         </div>
         <div class="card-body">
+          <% include ./partials/messages %>
           <div class="form-group">
             <label for="price">Small Description</label>
             <textarea id="small_desc" name="small_desc" class="form-control" rows="2"></textarea>
@@ -105,10 +106,11 @@
           <div class="form-group">
             <label for="customFile">Custom Feature Image</label>
             <div class="custom-file">
-              <input type="file" name="feature_image" class="custom-file-input" id="customFile">
+              <input type="file" name="feature_image" class="custom-file-input" id="customFile" accept="image/png, image/jpeg" multiple>
               <label class="custom-file-label" for="customFile">Choose file</label>
             </div>
           </div>
+          
         </div>
         <!-- /.card-body -->
       </div>

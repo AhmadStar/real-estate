@@ -54,11 +54,12 @@ router.get('/property_list', dashboardController.property_list)
 // Add Property
 router.get('/add_property', dashboardController.add_property)
 // Add Property
-router.post('/save_property',[
-  check('space')
-    .not()
-    .isEmpty(),
-  check('description').isLength({ min: 6 })
+router.post('/save_property', upload.any(), [
+  check('space').not().isEmpty().withMessage('field is required'),
+  check('rooms').not().isEmpty().withMessage('field is required'),
+  check('bath').not().isEmpty().withMessage('field is required'),
+  check('garage').not().isEmpty().withMessage('field is required'),
+  check('price').not().isEmpty().withMessage('field is required'),
 ],
  dashboardController.save_property
 );
@@ -70,7 +71,7 @@ router.get('/agent_list', dashboardController.agent_list)
 // Add Agent 
 router.get('/add_agent', dashboardController.add_agent)
 // Save Agent 
-router.post('/save_agent',[
+router.post('/save_agent', upload.single('image') ,[
     check('name').not().isEmpty().withMessage('field is required'),
     check('role').not().isEmpty().withMessage('field is required'),
   ], 
@@ -84,7 +85,7 @@ router.get('/partner_list', dashboardController.partner_list)
 // Add Partner
 router.get('/add_partner', dashboardController.add_partner)
 // Save Partner 
-router.post('/save_partner' ,[
+router.post('/save_partner', upload.single('image') ,[
     check('name').not().isEmpty().withMessage('field is required'),
     // check('image').not().isEmpty().withMessage('field is required'),
   ],
