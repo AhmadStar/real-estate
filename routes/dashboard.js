@@ -64,7 +64,7 @@ router.post('/save_property', upload.any(), [
  dashboardController.save_property
 );
 
-
+router.post('/update_partner', upload.single('partner_image'), dashboardController.update_partner)
 
 // Agent List
 router.get('/agent_list', dashboardController.agent_list)

@@ -3,8 +3,6 @@ const passport = require('passport')
 const con = require('../app')
 const { validationResult } = require('express-validator');
 const helpers = require('../config/helper');
-// let multer = require('multer');
-// let multiparty = require('multiparty');
 
 const dashboard = async (req, res) => {
     res.render('dashboard/dashboard', { name:'req.user.name', layout: 'dashboard/dashboard_layout' })
@@ -150,6 +148,24 @@ const save_property = async (req, res) => {
     });
 };
 
+const edit_property = async (req, res) => {
+
+    const { id } = req.body
+    
+    const myquery = 
+    "select * from property where id = "+ id;
+    con.query(myquery, function (err, result) {  
+        if (err) throw err;
+        if(result > 0){
+            res.render('dashboard/edit_property', { property: result , name:'req.user.name', layout: 'dashboard/dashboard_layout' })
+        }
+    });
+};
+
+const update_property = async (req, res) => {
+    
+};
+
 const partner_list = async (req, res) => {
     const myquery = "SELECT * FROM partners"
     con.query(myquery, (err, result) => {  
@@ -189,6 +205,40 @@ const save_partner = async (req, res) => {
         res.redirect('/dashboard/add_partner')
     });
 
+};
+
+const edit_partner = async (req, res) => {
+    const { id } = req.body
+    
+    const myquery = 
+    "select * from partners where id = "+ id;
+    con.query(myquery, function (err, result) {  
+        if (err) throw err;
+        if(result > 0){
+            res.render('dashboard/edit_partner', { partner: result , name:'req.user.name', layout: 'dashboard/dashboard_layout' })
+        }
+    });
+};
+
+const update_partner = async (req, res) => {
+    const { partner_id, partner_name } = req.body;
+    
+    if(req.file){
+        const myquery = 
+        "update partners set name ='"+partner_name+"', image='"+req.file.filename+"' where id = "+ partner_id;
+        con.query(myquery, function (err, result) {  
+            if (err) throw err;
+            res.json({ result : result });
+        });
+    }else{
+        const myquery = 
+        "update partners set name ='"+partner_name+"' where id = "+ partner_id;
+        con.query(myquery, function (err, result) {  
+            if (err) throw err;
+            res.json({ result : result });
+        });
+    }
+    
 };
 
 const agent_list = async (req, res) => {
@@ -232,6 +282,23 @@ const save_agent = async (req, res) => {
     });
 };
 
+const edit_agent = async (req, res) => {
+    const { id } = req.body
+    
+    const myquery = 
+    "select * from agents where id = "+ id;
+    con.query(myquery, function (err, result) {  
+        if (err) throw err;
+        if(result > 0){
+            res.render('dashboard/edit_agent', { agent: result , name:'req.user.name', layout: 'dashboard/dashboard_layout' })
+        }
+    });
+};
+
+const update_agent = async (req, res) => {
+    res.render('dashboard/add_property', { name:'req.user.name', layout: 'dashboard/dashboard_layout' })
+};
+
 const settings = async (req, res) => {
     const en_settings = [];
     const ch_settings = [];
@@ -273,16 +340,22 @@ exports.login = login;
 exports.property_list = property_list;
 exports.add_property = add_property;
 exports.save_property = save_property;
+exports.edit_property = edit_property;
+exports.update_property = update_property;
 
 // Partners CRUD
 exports.partner_list = partner_list;
 exports.add_partner = add_partner;
 exports.save_partner = save_partner;
+exports.edit_partner = edit_partner;
+exports.update_partner = update_partner;
 
 // Agents CRUD
 exports.agent_list = agent_list;
 exports.add_agent = add_agent;
 exports.save_agent = save_agent;
+exports.edit_agent = edit_agent;
+exports.update_agent = update_agent;
 
 // Settings
 exports.settings = settings;
