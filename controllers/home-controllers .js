@@ -114,6 +114,11 @@ const contact = async (req, res) => {
     res.render('contact' ,{ partners:partners, title:'Contact Us'})
 };
 
+const news = async (req, res) => {
+    let partners = await get_partner()
+    res.render('news' ,{ partners:partners, title:'News'})
+};
+
 const get_property = (req, res) => {
     const myquery = "SELECT * from property WHERE property.id = " + "'"+req.params.id+"' LIMIT 1"
     con.query(myquery, (err, property) => {  
@@ -197,6 +202,7 @@ const property_list = async (req, res) => {
 exports.home = home;
 exports.about = about;
 exports.contact = contact;
+exports.news = news;
 exports.get_property = get_property;
 exports.compare = compare;
 exports.search = search;

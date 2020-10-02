@@ -177,7 +177,7 @@
                 <% featured_property.forEach(function(row) { %>
                     <div class="col-lg-4">
                         <div class="feature-item">
-                            <div class="fi-pic set-bg" data-setbg="img/<%= row.feature_image %>">
+                            <div class="fi-pic set-bg" data-setbg="<%= row.feature_image %>">
                                 <div class="pic-tag">
                                     <div class="f-text"><%= __('feauture') %></div>
                                     <div class="s-text"><%= __('for_sale') %></div>
@@ -278,7 +278,7 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="stp-pic">
-                                <img src="img/properties/properties-1.jpg" alt="">
+                                <img src="<%= row.feature_image %>" alt="">
                             </div>
                         </div>
                         <div class="col-lg-6">
@@ -287,26 +287,26 @@
                                 <h2>Villa 9721 Glen Creek</h2>
                                 <div class="room-price">
                                     <span><%= __('start_from') %>:</span>
-                                    <h4>$3.000.000</h4>
+                                    <h4>$<%= row.price %></h4>
                                 </div>
-                                <div class="properties-location"><i class="icon_pin"></i> 9721 Glen Creek Ave. Ballston Spa, NY</div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                <div class="properties-location"><i class="icon_pin"></i> <%= row.location %></div>
+                                <p><%= row.small_desc %></p>
                                 <ul class="room-features">
                                     <li>
                                         <i class="fa fa-arrows"></i>
-                                        <p>5201 sqft</p>
+                                        <p><%= row.space %></p>
                                     </li>
                                     <li>
                                         <i class="fa fa-bed"></i>
-                                        <p>8 Bed Room</p>
+                                        <p><%= row.rooms %></p>
                                     </li>
                                     <li>
                                         <i class="fa fa-bath"></i>
-                                        <p>7 Baths Bed</p>
+                                        <p><%= row.bath %></p>
                                     </li>
                                     <li>
                                         <i class="fa fa-car"></i>
-                                        <p>1 Garage</p>
+                                        <p><%= row.garage %></p>
                                     </li>
                                 </ul>
                             </div>

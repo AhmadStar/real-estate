@@ -12,6 +12,9 @@ router.get('/about', homeController.about)
 // Contact Page
 router.get('/contact', homeController.contact)
 
+// Contact Page
+router.get('/news', homeController.news)
+
 // Search
 router.post('/search', homeController.search)
 
