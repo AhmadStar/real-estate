@@ -266,91 +266,54 @@
                         <span><%= __('top_property_foru') %></span>
                         <h2><%= __('top_properties') %></h2>
                     </div>
-                    <a href="#" class="top-property-all"><%= __('view_all_property') %></a>
+                    <a href="/property_list" class="top-property-all"><%= __('view_all_property') %></a>
                 </div>
             </div>
         </div>
     </div>
     <div class="container">
         <div class="top-properties-carousel owl-carousel">
-            <div class="single-top-properties">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="stp-pic">
-                            <img src="img/properties/properties-1.jpg" alt="">
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="stp-text">
-                            <div class="s-text"><%= __('for_sale') %></div>
-                            <h2>Villa 9721 Glen Creek</h2>
-                            <div class="room-price">
-                                <span><%= __('start_from') %>:</span>
-                                <h4>$3.000.000</h4>
+            <% top_rated_property.forEach(function(row) { %> 
+                <div class="single-top-properties">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="stp-pic">
+                                <img src="img/properties/properties-1.jpg" alt="">
                             </div>
-                            <div class="properties-location"><i class="icon_pin"></i> 9721 Glen Creek Ave. Ballston Spa, NY</div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            <ul class="room-features">
-                                <li>
-                                    <i class="fa fa-arrows"></i>
-                                    <p>5201 sqft</p>
-                                </li>
-                                <li>
-                                    <i class="fa fa-bed"></i>
-                                    <p>8 Bed Room</p>
-                                </li>
-                                <li>
-                                    <i class="fa fa-bath"></i>
-                                    <p>7 Baths Bed</p>
-                                </li>
-                                <li>
-                                    <i class="fa fa-car"></i>
-                                    <p>1 Garage</p>
-                                </li>
-                            </ul>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="stp-text">
+                                <div class="s-text"><%= __('for_sale') %></div>
+                                <h2>Villa 9721 Glen Creek</h2>
+                                <div class="room-price">
+                                    <span><%= __('start_from') %>:</span>
+                                    <h4>$3.000.000</h4>
+                                </div>
+                                <div class="properties-location"><i class="icon_pin"></i> 9721 Glen Creek Ave. Ballston Spa, NY</div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                <ul class="room-features">
+                                    <li>
+                                        <i class="fa fa-arrows"></i>
+                                        <p>5201 sqft</p>
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-bed"></i>
+                                        <p>8 Bed Room</p>
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-bath"></i>
+                                        <p>7 Baths Bed</p>
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-car"></i>
+                                        <p>1 Garage</p>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="single-top-properties">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="stp-pic">
-                            <img src="img/properties/properties-2.jpg" alt="">
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="stp-text">
-                            <div class="s-text"><%= __('for_sale') %></div>
-                            <h2>Villa 9721 Glen Creek</h2>
-                            <div class="room-price">
-                                <span><%= __('start_from') %>:</span>
-                                <h4>$3.000.000</h4>
-                            </div>
-                            <div class="properties-location"><i class="icon_pin"></i> 9721 Glen Creek Ave. Ballston Spa, NY</div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            <ul class="room-features">
-                                <li>
-                                    <i class="fa fa-arrows"></i>
-                                    <p>5201 sqft</p>
-                                </li>
-                                <li>
-                                    <i class="fa fa-bed"></i>
-                                    <p>8 Bed Room</p>
-                                </li>
-                                <li>
-                                    <i class="fa fa-bath"></i>
-                                    <p>7 Baths Bed</p>
-                                </li>
-                                <li>
-                                    <i class="fa fa-car"></i>
-                                    <p>1 Garage</p>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <% }) %>
         </div>
     </div>
 </div>
@@ -369,71 +332,21 @@
         </div>
         <div class="row">
             <div class="agent-carousel owl-carousel">
-                <div class="col-lg-3">
-                    <div class="single-agent">
-                        <div class="sa-pic">
-                            <img src="img/agent/agent-1.jpg" alt="">
-                            <div class="hover-social">
-                                <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-                                <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
-                                <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+                <% agents.forEach(function(row) { %>
+                    <div class="col-lg-3">
+                        <div class="single-agent">
+                            <div class="sa-pic">
+                                <img src="<%= row.image %>" alt="">
+                                <div class="hover-social">
+                                    <a href="<%= row.twitter %>" class="twitter"><i class="fa fa-twitter"></i></a>
+                                    <a href="<%= row.instagram %>" class="instagram"><i class="fa fa-instagram"></i></a>
+                                    <a href="<%= row.facebook %>" class="facebook"><i class="fa fa-facebook"></i></a>
+                                </div>
                             </div>
+                            <h5><%= row.name %><span><%= row.role %></span></h5>
                         </div>
-                        <h5>Matthew Robbins <span>Founder & Ceo</span></h5>
                     </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="single-agent">
-                        <div class="sa-pic">
-                            <img src="img/agent/agent-2.jpg" alt="">
-                            <div class="hover-social">
-                                <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-                                <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
-                                <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-                            </div>
-                        </div>
-                        <h5>Tillie Burns <span>Marketing Manager</span></h5>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="single-agent">
-                        <div class="sa-pic">
-                            <img src="img/agent/agent-3.jpg" alt="">
-                            <div class="hover-social">
-                                <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-                                <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
-                                <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-                            </div>
-                        </div>
-                        <h5>Derrick Lawson <span>Company Agents</span></h5>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="single-agent">
-                        <div class="sa-pic">
-                            <img src="img/agent/agent-4.jpg" alt="">
-                            <div class="hover-social">
-                                <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-                                <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
-                                <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-                            </div>
-                        </div>
-                        <h5>Clifford Colon <span>Saler Manager</span></h5>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="single-agent">
-                        <div class="sa-pic">
-                            <img src="img/agent/agent-5.jpg" alt="">
-                            <div class="hover-social">
-                                <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-                                <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
-                                <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-                            </div>
-                        </div>
-                        <h5>Clifford Colon <span>Saler Manager</span></h5>
-                    </div>
-                </div>
+                <% }) %>
             </div>
         </div>
     </div>
@@ -503,31 +416,13 @@
 <div class="partner-section">
     <div class="container">
         <div class="partner-carousel owl-carousel">
-            <a href="#" class="partner-logo">
-                <div class="partner-logo-tablecell">
-                    <img src="img/partner/partner-1.png" alt="">
-                </div>
-            </a>
-            <a href="#" class="partner-logo">
-                <div class="partner-logo-tablecell">
-                    <img src="img/partner/partner-2.png" alt="">
-                </div>
-            </a>
-            <a href="#" class="partner-logo">
-                <div class="partner-logo-tablecell">
-                    <img src="img/partner/partner-3.png" alt="">
-                </div>
-            </a>
-            <a href="#" class="partner-logo">
-                <div class="partner-logo-tablecell">
-                    <img src="img/partner/partner-4.png" alt="">
-                </div>
-            </a>
-            <a href="#" class="partner-logo">
-                <div class="partner-logo-tablecell">
-                    <img src="img/partner/partner-5.png" alt="">
-                </div>
-            </a>
+            <% partners.forEach(function(row) { %>
+                <a href="#" class="partner-logo">
+                    <div class="partner-logo-tablecell">
+                        <img src="<%= row.image %>" alt="">
+                    </div>
+                </a>
+            <% }) %>
         </div>
     </div>
 </div>

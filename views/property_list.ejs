@@ -89,44 +89,26 @@
                     </form>
                     <div class="best-agents">
                         <h4><%= __('best_agents') %></h4>
-                        <a href="#" class="ba-item">
-                            <div class="ba-pic">
-                                <img src="img/properties/best-agent-1.jpg" alt="">
-                            </div>
-                            <div class="ba-text">
-                                <h5>Lester Bradley</h5>
-                                <span>Company Agents</span>
-                                <p class="property-items">6 <%= __('property') %> </p>
-                            </div>
-                        </a>
-                        <a href="#" class="ba-item">
-                            <div class="ba-pic">
-                                <img src="img/properties/best-agent-2.jpg" alt="">
-                            </div>
-                            <div class="ba-text">
-                                <h5>Janie Blair</h5>
-                                <span>Company Agents</span>
-                                <p class="property-items">6 <%= __('property') %> </p>
-                            </div>
-                        </a>
-                        <a href="#" class="ba-item">
-                            <div class="ba-pic">
-                                <img src="img/properties/best-agent-3.jpg" alt="">
-                            </div>
-                            <div class="ba-text">
-                                <h5>Sophia Cole</h5>
-                                <span>Marketing & Ceo</span>
-                                <p class="property-items">6 <%= __('property') %> </p>
-                            </div>
-                        </a>
+                        <% top_agents.forEach(function(row) { %>
+                            <a href="#" class="ba-item">
+                                <div class="ba-pic agents-property-list">
+                                    <img src="<%= row.image %>" alt="">
+                                </div>
+                                <div class="ba-text">
+                                    <h5><%= row.name %></h5>
+                                    <span><%= row.role %></span>
+                                    <p class="property-items">6 <%= __('property') %> </p>
+                                </div>
+                            </a>
+                         <% }) %>
                     </div>
                 </div>
             </div>
             <div class="col-lg-9">
                 <h4 class="property-title"><%= __('property') %></h4>
                 <div class="property-list">
-                    <%if(result.length > 0){ 
-                    result.forEach(function(row) { %>
+                    <%if(properties.length > 0){ 
+                        properties.forEach(function(row) { %>
                         <div class="single-property-item">
                             <div class="row">
                                 <div class="col-md-4">
@@ -181,31 +163,13 @@
 <div class="partner-section">
     <div class="container">
         <div class="partner-carousel owl-carousel">
-            <a href="#" class="partner-logo">
-                <div class="partner-logo-tablecell">
-                    <img src="img/partner/partner-1.png" alt="">
-                </div>
-            </a>
-            <a href="#" class="partner-logo">
-                <div class="partner-logo-tablecell">
-                    <img src="img/partner/partner-2.png" alt="">
-                </div>
-            </a>
-            <a href="#" class="partner-logo">
-                <div class="partner-logo-tablecell">
-                    <img src="img/partner/partner-3.png" alt="">
-                </div>
-            </a>
-            <a href="#" class="partner-logo">
-                <div class="partner-logo-tablecell">
-                    <img src="img/partner/partner-4.png" alt="">
-                </div>
-            </a>
-            <a href="#" class="partner-logo">
-                <div class="partner-logo-tablecell">
-                    <img src="img/partner/partner-5.png" alt="">
-                </div>
-            </a>
+            <% partners.forEach(function(row) { %>
+                <a href="#" class="partner-logo">
+                    <div class="partner-logo-tablecell">
+                        <img src="<%= row.image %>" alt="">
+                    </div>
+                </a>
+            <% }) %>
         </div>
     </div>
 </div>

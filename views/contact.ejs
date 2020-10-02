@@ -65,31 +65,13 @@
 <div class="partner-section contact-partner">
     <div class="container">
         <div class="partner-carousel owl-carousel">
-            <a href="#" class="partner-logo">
-                <div class="partner-logo-tablecell">
-                    <img src="img/partner/partner-1.png" alt="">
-                </div>
-            </a>
-            <a href="#" class="partner-logo">
-                <div class="partner-logo-tablecell">
-                    <img src="img/partner/partner-2.png" alt="">
-                </div>
-            </a>
-            <a href="#" class="partner-logo">
-                <div class="partner-logo-tablecell">
-                    <img src="img/partner/partner-3.png" alt="">
-                </div>
-            </a>
-            <a href="#" class="partner-logo">
-                <div class="partner-logo-tablecell">
-                    <img src="img/partner/partner-4.png" alt="">
-                </div>
-            </a>
-            <a href="#" class="partner-logo">
-                <div class="partner-logo-tablecell">
-                    <img src="img/partner/partner-5.png" alt="">
-                </div>
-            </a>
+            <% partners.forEach(function(row) { %>
+                <a href="#" class="partner-logo">
+                    <div class="partner-logo-tablecell">
+                        <img src="<%= row.image %>" alt="">
+                    </div>
+                </a>
+            <% }) %>
         </div>
     </div>
 </div>

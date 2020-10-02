@@ -1,54 +1,117 @@
 const con = require('../app')
 
+function get_hero_property(){
+    return new Promise((resolve, reject) => {
+        const hero = "SELECT * FROM property limit 4"
+        con.query(hero, function (err, result){
+            if (err){
+                console.log("Error: " + err);
+                reject(err);
+            }
+            resolve(result)
+        })
+    })
+}
+
+function get_featured_property(){
+    return new Promise((resolve, reject) => {
+        const featured = "SELECT * FROM property order by space limit 4"
+        con.query(featured, function (err, result){
+            if (err){
+                console.log("Error: " + err);
+                reject(err);
+            }
+            resolve(result)
+        })
+    })
+}
+
+function get_top_rated_property(){
+    return new Promise((resolve, reject) => {
+        const top_rated = "SELECT * FROM property order by price limit 4"
+        con.query(top_rated, function (err, result){
+            if (err){
+                console.log("Garden Error: " + err);
+                reject(err);
+            }
+            resolve(result)
+        })
+    })
+}
+
+function get_partner(){
+    return new Promise((resolve, reject) => {
+        const top_rated = "SELECT * FROM partners"
+        con.query(top_rated, function (err, result){
+            if (err){
+                console.log("Garden Error: " + err);
+                reject(err);
+            }
+            resolve(result)
+        })
+    })
+}
+
+function get_agents(){
+    return new Promise((resolve, reject) => {
+        const top_rated = "SELECT * FROM agents"
+        con.query(top_rated, function (err, result){
+            if (err){
+                console.log("Garden Error: " + err);
+                reject(err);
+            }
+            resolve(result)
+        })
+    })
+}
+
+function get_top_agents(){
+    return new Promise((resolve, reject) => {
+        const top_rated = "SELECT * FROM agents limit 3"
+        con.query(top_rated, function (err, result){
+            if (err){
+                console.log("Garden Error: " + err);
+                reject(err);
+            }
+            resolve(result)
+        })
+    })
+}
+
+function get_properties(){
+    return new Promise((resolve, reject) => {
+        const property = "SELECT * FROM property"
+        con.query(property, function (err, result){
+            if (err){
+                console.log("Error: " + err);
+                reject(err);
+            }
+            resolve(result)
+        })
+    })
+}
+
 const home = async (req, res) => {
-    const hero = "SELECT * FROM property limit 4"
-    const featured = "SELECT * FROM property order by space limit 4"
-    const top_rated = "SELECT * FROM property order by price limit 4"
-    let hero_property = await con.query(hero, (err, result) => {
-        if (err) throw err;  
-        if(result.length > 0){
-            // return result[0].data;
-            res.render('home' ,{hero_property:result,featured_property:[],top_rated_property:[], title:'Home'})
-        }
-    });
+    let hero_property = await get_hero_property()
+    let featured_property = await get_featured_property()
+    let top_rated_property = await get_top_rated_property()
+    let partners = await get_partner()
+    let agents = await get_agents()
     
-    // console.log(hero_property)
-
-    // let featured_property = await con.query(featured, (err, result) => {
-    //     if (err) throw err;  
-    //     if(result.length > 0){
-    //         return result;
-    //     }
-    // });
-
-    // let top_rated_property = await con.query(top_rated, (err, result) => {
-    //     if (err) throw err;  
-    //     if(result.length > 0){
-    //         return result;
-    //     }
-    // });
-
-    // res.render('home' ,{hero_property:hero_property,featured_property:featured_property,top_rated_property:top_rated_property, title:'Home'})
+    res.render('home' 
+    ,{hero_property:hero_property,featured_property:featured_property,top_rated_property:top_rated_property
+        ,partners:partners,agents:agents, title:'Home'})
 };
 
-const about = (req, res) => {
-    const myquery = "SELECT * FROM property"
-    con.query(myquery, (err, result) => {  
-        if (err) throw err;  
-        if(result.length > 0){
-            res.render('about' ,{result:result, title:'About Us'})
-        }
-    });
+const about = async (req, res) => {
+    let partners = await get_partner()
+    let agents = await get_agents()
+    res.render('about' ,{ partners:partners, agents:agents, title:'About Us'})
 };
 
-const contact = (req, res) => {
-    const myquery = "SELECT * FROM property"
-    con.query(myquery, (err, result) => {  
-        if (err) throw err;  
-        if(result.length > 0){
-            res.render('contact' ,{result:result, title:'Contact Us'})
-        }
-    });
+const contact = async (req, res) => {
+    let partners = await get_partner()
+    res.render('contact' ,{ partners:partners, title:'Contact Us'})
 };
 
 const get_property = (req, res) => {
@@ -125,14 +188,10 @@ const search = async (req, res) => {
 };
 
 const property_list = async (req, res) => {
-    let myquery = "SELECT * from property"
-    
-    con.query(myquery, function (err, result) {  
-        if (err) throw err; 
-        if(result.length > 0){
-            res.render('property_list' ,{result:result, title:'Property List'})
-        }
-    });
+    let partners = await get_partner()
+    let properties = await get_properties()
+    let top_agents = await get_top_agents()
+    res.render('property_list' ,{ properties:properties, partners:partners, top_agents:top_agents, title:'Property List'} )
 };
 
 exports.home = home;
