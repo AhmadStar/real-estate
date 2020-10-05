@@ -85,7 +85,6 @@
                 <li><a href="/property_list"><%= __('property') %></a></li>
                 <li><a href="/about"><%= __('about') %></a></li>
                 <li><a href="/news"><%= __('news') %></a></li>
-                <li><a href="./property-details.html"><%= __('pages') %></a></li>
                 <li><a href="/contact"><%= __('contact_us') %></a></li>
             </ul>
         </nav>
@@ -95,21 +94,21 @@
                     <i class="icon_phone"></i>
                     <div class="info-text">
                         <span><%= __('phone') %>:</span>
-                        <p>(+12) 345 6789</p>
+                        <p><%= settings['phone'] %></p>
                     </div>
                 </li>
                 <li>
                     <i class="icon_map"></i>
                     <div class="info-text">
                         <span><%= __('address') %>:</span>
-                        <p>16 Creek Ave, <span>NY</span></p>
+                        <p><%= settings['location'] %></p>
                     </div>
                 </li>
                 <li>
                     <i class="icon_mail"></i>
                     <div class="info-text">
                         <span><%= __('email') %>:</span>
-                        <p>Info.cololib@gmail.com</p>
+                        <p><%= settings['email'] %></p>
                     </div>
                 </li>
             </ul>
@@ -129,7 +128,6 @@
                                 <li><a href="/property_list"><%= __('property') %></a></li>
                                 <li><a href="/about"><%= __('about') %></a></li>
                                 <li><a href="/news"><%= __('news') %></a></li>
-                                <li><a href="./property-details.html"><%= __('pages') %></a></li>
                                 <li><a href="/contact"><%= __('contact_us') %></a></li>
                             </ul>
                         </nav>
@@ -184,21 +182,21 @@
                                     <i class="icon_phone"></i>
                                     <div class="info-text">
                                         <span><%= __('phone') %>:</span>
-                                        <p>(+12) 345 6789</p>
+                                        <p><%= settings['phone'] %></p>
                                     </div>
                                 </li>
                                 <li>
                                     <i class="icon_map"></i>
                                     <div class="info-text">
                                         <span><%= __('address') %>:</span>
-                                        <p>16 Creek Ave, <span>NY</span></p>
+                                        <p><%= settings['location'] %></p>
                                     </div>
                                 </li>
                                 <li>
                                     <i class="icon_mail"></i>
                                     <div class="info-text">
                                         <span><%= __('email') %>:</span>
-                                        <p>Info.cololib@gmail.com</p>
+                                        <p><%= settings['email'] %></p>
                                     </div>
                                 </li>
                             </ul>

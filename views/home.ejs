@@ -2,7 +2,7 @@
 <section class="hero-section">
     <div class="hero-items owl-carousel">
         <% hero_property.forEach(function(row) { %>
-            <div class="single-hero-item set-bg" data-setbg="img/<%= row.feature_image %>">
+            <div class="single-hero-item set-bg" data-setbg="<%= row.feature_image %>">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-8 offset-lg-2">
@@ -42,7 +42,7 @@
         <div class="thumbs owl-carousel">
             <% hero_property.forEach(function(row) { %>
                 <div class="item">
-                    <img src="img/<%= row.feature_image %>" alt="">
+                    <img src="<%= row.feature_image %>" alt="">
                 </div>
             <% }) %>
             

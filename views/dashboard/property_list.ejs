@@ -33,31 +33,42 @@
                   <th>id</th>
                   <th>space</th>
                   <th>rooms</th>
+                  <th>bath</th>
+                  <th>garage</th>
                   <th>price</th>
+                  <th>location</th>
                   <th>description</th>
+                  <th>small_desc</th>
+                  <th>type</th>
+                  <th>amenities</th>
+                  <th>built_year</th>
+                  <th>furniture_type</th>
                   <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
                   <% result.forEach(function(row) { %>
                       <tr>
-                        <td><%= row.id %></td>
-                        <td><%= row.space %></td>
-                        <td><%= row.rooms %></td>
-                        <td><%= row.price %></td>
-                        <td><%= row.description %></td>
+                        <td name="id"><%= row.id %></td>
+                        <td name="space"><%= row.space %></td>
+                        <td name="rooms"><%= row.rooms %></td>
+                        <td name="bath"><%= row.bath %></td>
+                        <td name="garage"><%= row.garage %></td>
+                        <td name="price"><%= row.price %></td>
+                        <td name="location"><%= row.location %></td>
+                        <td name="description"><%= row.description %></td>
+                        <td name="small_desc"><%= row.small_desc %></td>
+                        <td name="type"><%= row.type %></td>
+                        <td name="amenities"><%= row.amenities %></td>
+                        <td name="built_year"><%= row.built_year %></td>
+                        <td name="furniture_type"><%= row.furniture_type %></td>
                         <td class="project-actions text-right">
-                          <a class="btn btn-primary btn-sm" href="#">
-                              <i class="fas fa-folder">
-                              </i>
-                              View
-                          </a>
-                          <a class="btn btn-info btn-sm" href="#">
+                          <a class="btn btn-info btn-sm" id="edit_property" href="#">
                               <i class="fas fa-pencil-alt">
                               </i>
                               Edit
                           </a>
-                          <a class="btn btn-danger btn-sm" href="#">
+                          <a class="btn btn-danger btn-sm" id="delete_property" href="#">
                               <i class="fas fa-trash">
                               </i>
                               Delete
@@ -79,3 +90,77 @@
     <!-- /.container-fluid -->
   </section>
   <!-- /.content -->
+
+
+  <div class="modal fade" id="property_modal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Edit Property Modal</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form method="POST"  id="property_form">
+            <div class="form-group">
+              <input type="hidden" name="property_id" class="form-control" id="property_id">
+              <label for="space" class="col-form-label">Space:</label>
+              <input type="text" name="space" class="form-control" id="space">
+            </div>
+            <div class="form-group">
+              <label for="rooms" class="col-form-label">rooms:</label>
+              <input type="text" name="rooms" class="form-control" id="rooms">
+            </div>
+            <div class="form-group">
+              <label for="bath" class="col-form-label">bath:</label>
+              <input type="text" name="bath" class="form-control" id="bath">
+            </div>
+            <div class="form-group">
+              <label for="garage" class="col-form-label">garage:</label>
+              <input type="text" name="garage" class="form-control" id="garage">
+            </div>
+            <div class="form-group">
+              <label for="price" class="col-form-label">price:</label>
+              <input type="text" name="price" class="form-control" id="price">
+            </div>
+            <div class="form-group">
+              <label for="location" class="col-form-label">location:</label>
+              <input type="text" name="location" class="form-control" id="location">
+            </div>
+            <div class="form-group">
+              <label for="description" class="col-form-label">description:</label>
+              <input type="text" name="description" class="form-control" id="description">
+            </div>
+            <div class="form-group">
+              <label for="small_desc" class="col-form-label">small_desc:</label>
+              <input type="text" name="small_desc" class="form-control" id="small_desc">
+            </div>
+            <div class="form-group">
+              <label for="type" class="col-form-label">type:</label>
+              <input type="text" name="type" class="form-control" id="type">
+            </div>
+            <div class="form-group">
+              <label for="amenities" class="col-form-label">amenities:</label>
+              <input type="text" name="amenities" class="form-control" id="amenities">
+            </div>
+            <div class="form-group">
+              <label for="built_year" class="col-form-label">built year:</label>
+              <input type="text" name="built_year" class="form-control" id="built_year">
+            </div>
+            <div class="form-group">
+              <label for="message-text" class="col-form-label">Property Images:</label>
+              <input type="file" name="property_images" class="form-control" id="property_images" accept="image/png, image/jpeg" multiple>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer justify-content-between">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" id="update_property" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->

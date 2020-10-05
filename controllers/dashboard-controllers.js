@@ -148,22 +148,47 @@ const save_property = async (req, res) => {
     });
 };
 
-const edit_property = async (req, res) => {
+const update_property = async (req, res) => {
+    const { property_id, space , rooms, bath, garage, price, location, description, small_desc, type, amenities, built_year, furniture_type } = req.body;
 
-    const { id } = req.body
-    
-    const myquery = 
-    "select * from property where id = "+ id;
-    con.query(myquery, function (err, result) {  
-        if (err) throw err;
-        if(result > 0){
-            res.render('dashboard/edit_property', { property: result , name:'req.user.name', layout: 'dashboard/dashboard_layout' })
-        }
-    });
+    // console.log(req.body)
+
+    console.log(req.files.length);
+
+    // if(req.files.length == 0){
+
+    // if(req.file){
+    //     const myquery = 
+    //     "update agents set name ='"+agent_name+"',facebook ='"+facebook+"' ,twitter ='"+twitter+"' ,instagram ='"+instagram+"' , phone ='"+phone+"' , role ='"+role+"' , image='"+req.file.filename+"' where id = "+ agent_id;
+
+    //     console.log(myquery)
+
+    //     con.query(myquery, function (err, result) {  
+    //         if (err) throw err;
+    //         res.json({ result : result });
+    //     });
+    // }else{
+    //     const myquery = 
+    //     "update agents set name ='"+agent_name+"' where id = "+ agent_id;
+    //     con.query(myquery, function (err, result) {  
+    //         if (err) throw err;
+    //         res.json({ result : result });
+    //     });
+    // }
 };
 
-const update_property = async (req, res) => {
-    
+const delete_property = async (req, res) => {
+    const { property_id } = req.body;
+
+    const myquery = 
+    "delete from property where id = "+ property_id;
+
+    console.log(myquery)
+
+    con.query(myquery, function (err, result) {  
+        if (err) throw err;
+        res.json({ result : result });
+    });
 };
 
 const partner_list = async (req, res) => {
@@ -207,19 +232,6 @@ const save_partner = async (req, res) => {
 
 };
 
-const edit_partner = async (req, res) => {
-    const { id } = req.body
-    
-    const myquery = 
-    "select * from partners where id = "+ id;
-    con.query(myquery, function (err, result) {  
-        if (err) throw err;
-        if(result > 0){
-            res.render('dashboard/edit_partner', { partner: result , name:'req.user.name', layout: 'dashboard/dashboard_layout' })
-        }
-    });
-};
-
 const update_partner = async (req, res) => {
     const { partner_id, partner_name } = req.body;
     
@@ -238,7 +250,20 @@ const update_partner = async (req, res) => {
             res.json({ result : result });
         });
     }
-    
+};
+
+const delete_partner = async (req, res) => {
+    const { partner_id } = req.body;
+
+    const myquery = 
+    "delete from partners where id = "+ partner_id;
+
+    console.log(myquery)
+
+    con.query(myquery, function (err, result) {  
+        if (err) throw err;
+        res.json({ result : result });
+    });
 };
 
 const agent_list = async (req, res) => {
@@ -282,21 +307,41 @@ const save_agent = async (req, res) => {
     });
 };
 
-const edit_agent = async (req, res) => {
-    const { id } = req.body
+const update_agent = async (req, res) => {
+    const { agent_id, agent_name , facebook, twitter, instagram, phone, role } = req.body;
     
-    const myquery = 
-    "select * from agents where id = "+ id;
-    con.query(myquery, function (err, result) {  
-        if (err) throw err;
-        if(result > 0){
-            res.render('dashboard/edit_agent', { agent: result , name:'req.user.name', layout: 'dashboard/dashboard_layout' })
-        }
-    });
+    if(req.file){
+        const myquery = 
+        "update agents set name ='"+agent_name+"',facebook ='"+facebook+"' ,twitter ='"+twitter+"' ,instagram ='"+instagram+"' , phone ='"+phone+"' , role ='"+role+"' , image='"+req.file.filename+"' where id = "+ agent_id;
+
+        console.log(myquery)
+
+        con.query(myquery, function (err, result) {  
+            if (err) throw err;
+            res.json({ result : result });
+        });
+    }else{
+        const myquery = 
+        "update agents set name ='"+agent_name+"' where id = "+ agent_id;
+        con.query(myquery, function (err, result) {  
+            if (err) throw err;
+            res.json({ result : result });
+        });
+    }
 };
 
-const update_agent = async (req, res) => {
-    res.render('dashboard/add_property', { name:'req.user.name', layout: 'dashboard/dashboard_layout' })
+const delete_agent = async (req, res) => {
+    const { agent_id } = req.body;
+
+    const myquery = 
+    "delete from agents where id = "+ agent_id;
+
+    console.log(myquery)
+
+    con.query(myquery, function (err, result) {  
+        if (err) throw err;
+        res.json({ result : result });
+    });
 };
 
 const settings = async (req, res) => {
@@ -340,22 +385,23 @@ exports.login = login;
 exports.property_list = property_list;
 exports.add_property = add_property;
 exports.save_property = save_property;
-exports.edit_property = edit_property;
 exports.update_property = update_property;
+exports.delete_property = delete_property;
 
 // Partners CRUD
 exports.partner_list = partner_list;
 exports.add_partner = add_partner;
 exports.save_partner = save_partner;
-exports.edit_partner = edit_partner;
 exports.update_partner = update_partner;
+exports.delete_partner = delete_partner;
 
 // Agents CRUD
 exports.agent_list = agent_list;
 exports.add_agent = add_agent;
 exports.save_agent = save_agent;
-exports.edit_agent = edit_agent;
 exports.update_agent = update_agent;
+exports.delete_agent = delete_agent;
+
 
 // Settings
 exports.settings = settings;

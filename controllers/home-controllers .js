@@ -147,20 +147,6 @@ const compare = (req, res) => {
 };
 
 const search = async (req, res) => {
-    // let errors = [];
-    // const validation = validationResult(req)
-    // if (!validation.isEmpty()) {
-        
-    //     validation.errors.forEach(element => {
-    //         errors.push({msg: element.param+' '+element.msg});
-    //     });
-
-    //     return res.render('dashboard/add_agent', {
-    //         errors,
-    //         layout: 'dashboard/dashboard_layout',
-    //         name: 'test'
-    //     })
-    //   }
     const { type, room, bath, furniture_type, price, space } = req.body;
     
     let myquery = "SELECT * from property where 1 = 0"
@@ -181,14 +167,12 @@ const search = async (req, res) => {
         myquery = myquery + " OR space BETWEEN " + " "+matches2[0]+" " + " AND " + " "+matches2[1]+" " ;
     }
     
-    console.log(myquery);
+    let partners = await get_partner()
+    let top_agents = await get_top_agents()
 
     con.query(myquery, function (err, result) {  
         if (err) throw err; 
-        // if(result.length > 0){
-            res.render('property_list' ,{result:result, title:'Property List'})
-            // res.redirect('/dashboard/property_list' ,{result:result, title:'Property List'})
-        // }
+            res.render('property_list' ,{properties:result, partners:partners, top_agents:top_agents,  title:'Property List'})
     });
 };
 

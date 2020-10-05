@@ -63,8 +63,10 @@ router.post('/save_property', upload.any(), [
 ],
  dashboardController.save_property
 );
-
-router.post('/update_partner', upload.single('partner_image'), dashboardController.update_partner)
+// Update Property
+router.post('/update_property', upload.single('property_images'), dashboardController.update_property)
+// Delete Property
+router.post('/delete_property', dashboardController.delete_property)
 
 // Agent List
 router.get('/agent_list', dashboardController.agent_list)
@@ -77,7 +79,10 @@ router.post('/save_agent', upload.single('image') ,[
   ], 
   dashboardController.save_agent
 )
-
+// Update Agent
+router.post('/update_agent', upload.single('agent_image'), dashboardController.update_agent)
+// Delete Property
+router.post('/delete_agent', dashboardController.delete_agent)
 
 
 // Partner List
@@ -91,7 +96,10 @@ router.post('/save_partner', upload.single('image') ,[
   ],
   dashboardController.save_partner
 )
-
+// Update Partner
+router.post('/update_partner', upload.single('partner_image'), dashboardController.update_partner)
+// Delete Property
+router.post('/delete_partner', dashboardController.delete_partner)
 
 // Settings Handler 
 router.get('/settings', dashboardController.settings)
