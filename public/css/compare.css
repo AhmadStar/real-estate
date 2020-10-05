@@ -7,16 +7,16 @@ Primary style
   box-sizing: border-box;
 }
 
-html {
+/* html {
   font-size: 62.5%;
-}
+} */
 
-body {
+/* body {
   font-size: 1.6rem;
   font-family: "Source Sans Pro", sans-serif;
   color: #404042;
   background-color: #ffffff;
-}
+} */
 
 a {
   color: #9dc997;
@@ -70,7 +70,7 @@ Main Components
   float: right;
 }
 .cd-products-comparison-table .reset, .cd-products-comparison-table .filter {
-  font-size: 1.4rem;
+  font-size: 1rem;
 }
 .cd-products-comparison-table .reset {
   color: #404042;
@@ -109,7 +109,7 @@ Main Components
     font-size: 2.4rem;
   }
   .cd-products-comparison-table .reset, .cd-products-comparison-table .filter {
-    font-size: 1.6rem;
+    font-size: 1rem;
   }
   .cd-products-comparison-table .filter {
     padding: .6em 2em;
@@ -151,7 +151,7 @@ Main Components
 }
 @media only screen and (min-width: 1170px) {
   .cd-products-table .features {
-    width: 210px;
+    width: 215px;
   }
 }
 
@@ -219,7 +219,7 @@ Main Components
 }
 
 .cd-features-list li {
-  font-size: 1.4rem;
+  font-size: 1rem;
   font-weight: bold;
   padding: 25px 40px;
   border-color: #e6e6e6;
@@ -240,7 +240,7 @@ Main Components
 }
 @media only screen and (min-width: 1170px) {
   .cd-features-list li {
-    font-size: 1.6rem;
+    font-size: 1rem;
   }
   .cd-features-list li.rate {
     padding: 22px 0;
@@ -250,7 +250,7 @@ Main Components
 .features .cd-features-list li,
 .cd-products-table .features .top-info {
   /* fixed left column - items */
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: bold;
   /* set line-height value equal to font-size of text inside product cells */
   line-height: 14px;
