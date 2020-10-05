@@ -45,12 +45,13 @@
                                 <span><%= __('contact') %></span>
                                 <h2><%= __('get_in_touch') %></h2>
                             </div>
-                            <form action="#" class="contact-form">
-                                <input type="text" placeholder="<%= __('name') %>">
-                                <input type="text" placeholder="<%= __('email') %>">
-                                <input type="text" placeholder="<%= __('website') %>">
-                                <textarea placeholder="<%= __('message') %>"></textarea>
-                                <button type="submit" class="site-btn"><%= __('send_message') %></button>
+                            <p id="contact_form_result"></p>
+                            <form method="POST" id="contact_form" class="contact-form">
+                                <input type="text" name="name" placeholder="<%= __('name') %>">
+                                <input type="email" name="email" placeholder="<%= __('email') %>">
+                                <input type="text" name="title" placeholder="<%= __('title') %>">
+                                <textarea name="message" placeholder="<%= __('message') %>"></textarea>
+                                <button type="button" id="contact_us_form" class="site-btn"><%= __('send_message') %></button>
                             </form>
                         </div>
                     </div>

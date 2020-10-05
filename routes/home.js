@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router();
+const { check, validationResult } = require('express-validator');
 
 const homeController = require('../controllers/home-controllers ');
 
@@ -26,5 +27,14 @@ router.get('/compare', homeController.compare)
 
 // compare
 router.get('/property_list', homeController.property_list)
+
+// Subscribe
+router.post('/subscribe',[
+    check('email').not().isEmpty().withMessage('email field is required'),
+    check('email').isEmail().withMessage('please enter a valid email'),
+  ],homeController.subscribe)
+
+// Contact
+router.post('/contact_form', homeController.contact_form)
 
 module.exports = router

@@ -222,9 +222,12 @@
                                 <a href="#"><img src="/img/footer-logo.png" alt=""></a>
                             </div>
                             <p><%= __('subscribe') %></p>
-                            <form action="#" class="newslatter-form">
-                                <input type="text" placeholder="<%= __('enter_email') %>">
-                                <button type="submit"><i class="fa fa-location-arrow"></i></button>
+                            <p id="subscribe_result"></p>
+                            <form method="POST" id="subscribe_form" class="newslatter-form">
+                                <input type="email" name="email" placeholder="<%= __('enter_email') %>">
+                                <button type="button" id="subscribe">
+                                    <i class="fa fa-location-arrow"></i>
+                                </button>
                             </form>
                         </div>
                     </div>

@@ -1,4 +1,6 @@
 const con = require('../app')
+const { validationResult } = require('express-validator');
+
 
 function get_hero_property(){
     return new Promise((resolve, reject) => {
@@ -183,6 +185,39 @@ const property_list = async (req, res) => {
     res.render('property_list' ,{ properties:properties, partners:partners, top_agents:top_agents, title:'Property List'} )
 };
 
+const subscribe = async (req, res) => {
+    const { email } = req.body;
+    
+    let errors = [];
+    const validation = validationResult(req)
+    if (!validation.isEmpty()) {
+        validation.errors.forEach(element => {
+            errors.push({msg: element.msg});
+        });
+        return res.json({ value: false , errors : errors });
+    }
+
+    const myquery = 
+    "INSERT INTO subscribe ( email ) VALUES ('"+email+"')";
+    con.query(myquery, function (err, result) {  
+        if (err) throw err; 
+        return res.json({ value: true , result : result });
+    });
+
+};
+
+const contact_form = async (req, res) => {
+    const { name, email, message, title } = req.body;
+    
+    const myquery = 
+    "INSERT INTO contact ( name, email, message, title ) VALUES ('"+name+"', '"+email+"' ,'"+message+"' ,'"+title+"' )";
+    con.query(myquery, function (err, result) {  
+        if (err) throw err; 
+        return res.json({ value: true , result : result });
+    });
+
+};
+
 exports.home = home;
 exports.about = about;
 exports.contact = contact;
@@ -191,3 +226,5 @@ exports.get_property = get_property;
 exports.compare = compare;
 exports.search = search;
 exports.property_list = property_list;
+exports.subscribe = subscribe;
+exports.contact_form = contact_form;

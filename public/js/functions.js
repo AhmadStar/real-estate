@@ -150,15 +150,11 @@ $('#example1 #delete_agent').on('click', function()
     });
 });
 
-
-
-
 $('#mytable .customerIDCell').each(function() {
     alert($(this).html());
 });
 
 $(function () {
-
     // Date range picker
     $('#reservationdate').datetimepicker({
         format: 'YYYY-MM-DD'
@@ -170,57 +166,55 @@ function preview() {
     frame.src=URL.createObjectURL(event.target.files[0]);
 }
 
-
-
 $(function () {
 
-    $('#example1 #edit_partner').on('click', function()
-    {
-        $("#partner_modal #partner_id").val( $(this).closest('tr').find('td[name ="id"]').text() );
-        $("#partner_modal #partner_name").val( $(this).closest('tr').find('td[name ="name"]').text() );
-        $("#partner_modal #frame").attr("src", 'img/'+$(this).closest('tr').find('td[name ="image"]').text() );
-    
-        // show Modal
-        $('#partner_modal').modal('show');
-    });
+$('#example1 #edit_partner').on('click', function()
+{
+    $("#partner_modal #partner_id").val( $(this).closest('tr').find('td[name ="id"]').text() );
+    $("#partner_modal #partner_name").val( $(this).closest('tr').find('td[name ="name"]').text() );
+    $("#partner_modal #frame").attr("src", 'img/'+$(this).closest('tr').find('td[name ="image"]').text() );
 
-    $('#example1 #edit_agent').on('click', function()
-    {
-        $("#agent_modal #agent_id").val( $(this).closest('tr').find('td[name ="id"]').text() );
-        $("#agent_modal #agent_name").val( $(this).closest('tr').find('td[name ="name"]').text() );
-        $("#agent_modal #facebook").val( $(this).closest('tr').find('td[name ="facebook"]').text() );
-        $("#agent_modal #twitter").val( $(this).closest('tr').find('td[name ="twitter"]').text() );
-        $("#agent_modal #instagram").val( $(this).closest('tr').find('td[name ="instagram"]').text() );
-        $("#agent_modal #phone").val( $(this).closest('tr').find('td[name ="phone"]').text() );
-        $("#agent_modal #role").val( $(this).closest('tr').find('td[name ="role"]').text() );
-        $("#agent_modal #frame").attr("src", 'img/'+$(this).closest('tr').find('td[name ="image"]').text() );
+    // show Modal
+    $('#partner_modal').modal('show');
+});
 
-        // show Modal
-        $('#agent_modal').modal('show');
+$('#example1 #edit_agent').on('click', function()
+{
+    $("#agent_modal #agent_id").val( $(this).closest('tr').find('td[name ="id"]').text() );
+    $("#agent_modal #agent_name").val( $(this).closest('tr').find('td[name ="name"]').text() );
+    $("#agent_modal #facebook").val( $(this).closest('tr').find('td[name ="facebook"]').text() );
+    $("#agent_modal #twitter").val( $(this).closest('tr').find('td[name ="twitter"]').text() );
+    $("#agent_modal #instagram").val( $(this).closest('tr').find('td[name ="instagram"]').text() );
+    $("#agent_modal #phone").val( $(this).closest('tr').find('td[name ="phone"]').text() );
+    $("#agent_modal #role").val( $(this).closest('tr').find('td[name ="role"]').text() );
+    $("#agent_modal #frame").attr("src", 'img/'+$(this).closest('tr').find('td[name ="image"]').text() );
 
-    });
+    // show Modal
+    $('#agent_modal').modal('show');
+
+});
 
 
-    $('#example1 #edit_property').on('click', function()
-    {
-        $("#property_modal #property_id").val( $(this).closest('tr').find('td[name ="id"]').text() );
-        $("#property_modal #space").val( $(this).closest('tr').find('td[name ="space"]').text() );
-        $("#property_modal #rooms").val( $(this).closest('tr').find('td[name ="rooms"]').text() );
-        $("#property_modal #bath").val( $(this).closest('tr').find('td[name ="bath"]').text() );
-        $("#property_modal #garage").val( $(this).closest('tr').find('td[name ="garage"]').text() );
-        $("#property_modal #price").val( $(this).closest('tr').find('td[name ="price"]').text() );
-        $("#property_modal #location").val( $(this).closest('tr').find('td[name ="location"]').text() );
-        $("#property_modal #description").val( $(this).closest('tr').find('td[name ="description"]').text() );
-        $("#property_modal #small_desc").val( $(this).closest('tr').find('td[name ="small_desc"]').text() );
-        $("#property_modal #type").val( $(this).closest('tr').find('td[name ="type"]').text() );
-        $("#property_modal #amenities").val( $(this).closest('tr').find('td[name ="amenities"]').text() );
-        $("#property_modal #built_year").val( $(this).closest('tr').find('td[name ="built_year"]').text() );
-        $("#property_modal #furniture_type").val( $(this).closest('tr').find('td[name ="furniture_type"]').text() );
+$('#example1 #edit_property').on('click', function()
+{
+    $("#property_modal #property_id").val( $(this).closest('tr').find('td[name ="id"]').text() );
+    $("#property_modal #space").val( $(this).closest('tr').find('td[name ="space"]').text() );
+    $("#property_modal #rooms").val( $(this).closest('tr').find('td[name ="rooms"]').text() );
+    $("#property_modal #bath").val( $(this).closest('tr').find('td[name ="bath"]').text() );
+    $("#property_modal #garage").val( $(this).closest('tr').find('td[name ="garage"]').text() );
+    $("#property_modal #price").val( $(this).closest('tr').find('td[name ="price"]').text() );
+    $("#property_modal #location").val( $(this).closest('tr').find('td[name ="location"]').text() );
+    $("#property_modal #description").val( $(this).closest('tr').find('td[name ="description"]').text() );
+    $("#property_modal #small_desc").val( $(this).closest('tr').find('td[name ="small_desc"]').text() );
+    $("#property_modal #type").val( $(this).closest('tr').find('td[name ="type"]').text() );
+    $("#property_modal #amenities").val( $(this).closest('tr').find('td[name ="amenities"]').text() );
+    $("#property_modal #built_year").val( $(this).closest('tr').find('td[name ="built_year"]').text() );
+    $("#property_modal #furniture_type").val( $(this).closest('tr').find('td[name ="furniture_type"]').text() );
 
-        // show Modal
-        $('#property_modal').modal('show');
+    // show Modal
+    $('#property_modal').modal('show');
 
-    });
+});
 
 
 $("#example1").DataTable({
