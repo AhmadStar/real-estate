@@ -1,7 +1,4 @@
-// alert('application started');  
-
 $('#update_partner').click(function(){  
-
     var form_fileds = $('#partner_form').serializeArray();
 
     var form_data = new FormData();
@@ -31,7 +28,6 @@ $('#update_partner').click(function(){
 });
 
 $('#update_agent').click(function(){  
-
     var form_fileds = $('#agent_form').serializeArray();
 
     var form_data = new FormData();
@@ -62,16 +58,21 @@ $('#update_agent').click(function(){
 });
 
 $('#update_property').click(function(){  
-
     var form_fileds = $('#property_form').serializeArray();
-
     var form_data = new FormData();
-    var files = $('#property_images')[0].files[0];
-    if(files)
-        form_data.append('property_images',files);
 
+    // property image list
+    for (var i = 0; i < $('#property_images')[0].files.length; ++i) {
+        form_data.append('files[]', $('#property_images')[0].files[i]);
+    }
+
+    // feature image
+    var file = $('#feature_image')[0].files[0];
+    if(file)
+        form_data.append('feature_image',file);
+    
+    // property data fields    
     $.each(form_fileds, function(i, field){
-        console.log(field.name + ":" + field.value)
         form_data.append(''+field.name,field.value);
       });
 
@@ -92,8 +93,7 @@ $('#update_property').click(function(){
 
 });
 
-$('#example1 #delete_property').on('click', function()
-{
+$('#example1 #delete_property').on('click', function(){
     var property_id = $(this).closest('tr').find('td[name ="id"]').text();
     var row = $(this).closest('tr');
 
@@ -112,8 +112,7 @@ $('#example1 #delete_property').on('click', function()
     });
 });
 
-$('#example1 #delete_partner').on('click', function()
-{
+$('#example1 #delete_partner').on('click', function(){
     var partner_id = $(this).closest('tr').find('td[name ="id"]').text();
     var row = $(this).closest('tr');
 
@@ -131,8 +130,7 @@ $('#example1 #delete_partner').on('click', function()
     });
 });
 
-$('#example1 #delete_agent').on('click', function()
-{
+$('#example1 #delete_agent').on('click', function(){
     var agent_id = $(this).closest('tr').find('td[name ="id"]').text();
     var row = $(this).closest('tr');
 
@@ -154,88 +152,101 @@ $('#mytable .customerIDCell').each(function() {
     alert($(this).html());
 });
 
+// date time 
 $(function () {
     // Date range picker
     $('#reservationdate').datetimepicker({
         format: 'YYYY-MM-DD'
     });
 
+    // Date range picker
+    $('#built_year').datetimepicker({
+        format: 'YYYY-MM-DD'
+    });
 })
 
+// view image
 function preview() {
     frame.src=URL.createObjectURL(event.target.files[0]);
 }
 
+// populate data to modal
 $(function () {
 
-$('#example1 #edit_partner').on('click', function()
-{
-    $("#partner_modal #partner_id").val( $(this).closest('tr').find('td[name ="id"]').text() );
-    $("#partner_modal #partner_name").val( $(this).closest('tr').find('td[name ="name"]').text() );
-    $("#partner_modal #frame").attr("src", 'img/'+$(this).closest('tr').find('td[name ="image"]').text() );
+    $('#example1 #edit_partner').on('click', function()
+    {
+        $("#partner_modal #partner_id").val( $(this).closest('tr').find('td[name ="id"]').text() );
+        $("#partner_modal #partner_name").val( $(this).closest('tr').find('td[name ="name"]').text() );
+        $("#partner_modal #frame").attr("src", 'img/'+$(this).closest('tr').find('td[name ="image"]').text() );
 
-    // show Modal
-    $('#partner_modal').modal('show');
+        // show Modal
+        $('#partner_modal').modal('show');
+    });
+
+    $('#example1 #edit_agent').on('click', function()
+    {
+        $("#agent_modal #agent_id").val( $(this).closest('tr').find('td[name ="id"]').text() );
+        $("#agent_modal #agent_name").val( $(this).closest('tr').find('td[name ="name"]').text() );
+        $("#agent_modal #facebook").val( $(this).closest('tr').find('td[name ="facebook"]').text() );
+        $("#agent_modal #twitter").val( $(this).closest('tr').find('td[name ="twitter"]').text() );
+        $("#agent_modal #instagram").val( $(this).closest('tr').find('td[name ="instagram"]').text() );
+        $("#agent_modal #phone").val( $(this).closest('tr').find('td[name ="phone"]').text() );
+        $("#agent_modal #role").val( $(this).closest('tr').find('td[name ="role"]').text() );
+        $("#agent_modal #frame").attr("src", 'img/'+$(this).closest('tr').find('td[name ="image"]').text() );
+
+        // show Modal
+        $('#agent_modal').modal('show');
+
+    });
+
+
+    $('#example1 #edit_property').on('click', function()
+    {
+        $("#property_modal #property_id").val( $(this).closest('tr').find('td[name ="id"]').text() );
+        $("#property_modal #space").val( $(this).closest('tr').find('td[name ="space"]').text() );
+        $("#property_modal #rooms").val( $(this).closest('tr').find('td[name ="rooms"]').text() );
+        $("#property_modal #bath").val( $(this).closest('tr').find('td[name ="bath"]').text() );
+        $("#property_modal #garage").val( $(this).closest('tr').find('td[name ="garage"]').text() );
+        $("#property_modal #price").val( $(this).closest('tr').find('td[name ="price"]').text() );
+        $("#property_modal #location").val( $(this).closest('tr').find('td[name ="location"]').text() );
+        $("#property_modal #description").val( $(this).closest('tr').find('td[name ="description"]').text() );
+        $("#property_modal #small_desc").val( $(this).closest('tr').find('td[name ="small_desc"]').text() );
+        $("#property_modal #type").val( $(this).closest('tr').find('td[name ="type"]').text() );
+        $("#property_modal #amenities").val( $(this).closest('tr').find('td[name ="amenities"]').text() );
+        $("#property_modal #built_year").val( $(this).closest('tr').find('td[name ="built_year"]').text() );
+        $("#property_modal #furniture_type").val( $(this).closest('tr').find('td[name ="furniture_type"]').text() );
+
+        // show Modal
+        $('#property_modal').modal('show');
+
+    });
+
+
+    $("#example1").DataTable({
+        "responsive": true,
+        "autoWidth": false,
+        "columnDefs": [
+            {
+                "targets": [ 0 ],
+                // "visible": false,
+            },
+        ]
+    });
+
 });
 
-$('#example1 #edit_agent').on('click', function()
-{
-    $("#agent_modal #agent_id").val( $(this).closest('tr').find('td[name ="id"]').text() );
-    $("#agent_modal #agent_name").val( $(this).closest('tr').find('td[name ="name"]').text() );
-    $("#agent_modal #facebook").val( $(this).closest('tr').find('td[name ="facebook"]').text() );
-    $("#agent_modal #twitter").val( $(this).closest('tr').find('td[name ="twitter"]').text() );
-    $("#agent_modal #instagram").val( $(this).closest('tr').find('td[name ="instagram"]').text() );
-    $("#agent_modal #phone").val( $(this).closest('tr').find('td[name ="phone"]').text() );
-    $("#agent_modal #role").val( $(this).closest('tr').find('td[name ="role"]').text() );
-    $("#agent_modal #frame").attr("src", 'img/'+$(this).closest('tr').find('td[name ="image"]').text() );
+// active nav sidebar
+$(document).ready(function() {
+    /** add active class and stay opened when selected */
+    var url = window.location;
 
-    // show Modal
-    $('#agent_modal').modal('show');
+    // for sidebar menu entirely but not cover treeview
+    $('ul.nav-sidebar a').filter(function() {
+        return this.href == url;
+    }).addClass('active');
 
-});
-
-
-$('#example1 #edit_property').on('click', function()
-{
-    $("#property_modal #property_id").val( $(this).closest('tr').find('td[name ="id"]').text() );
-    $("#property_modal #space").val( $(this).closest('tr').find('td[name ="space"]').text() );
-    $("#property_modal #rooms").val( $(this).closest('tr').find('td[name ="rooms"]').text() );
-    $("#property_modal #bath").val( $(this).closest('tr').find('td[name ="bath"]').text() );
-    $("#property_modal #garage").val( $(this).closest('tr').find('td[name ="garage"]').text() );
-    $("#property_modal #price").val( $(this).closest('tr').find('td[name ="price"]').text() );
-    $("#property_modal #location").val( $(this).closest('tr').find('td[name ="location"]').text() );
-    $("#property_modal #description").val( $(this).closest('tr').find('td[name ="description"]').text() );
-    $("#property_modal #small_desc").val( $(this).closest('tr').find('td[name ="small_desc"]').text() );
-    $("#property_modal #type").val( $(this).closest('tr').find('td[name ="type"]').text() );
-    $("#property_modal #amenities").val( $(this).closest('tr').find('td[name ="amenities"]').text() );
-    $("#property_modal #built_year").val( $(this).closest('tr').find('td[name ="built_year"]').text() );
-    $("#property_modal #furniture_type").val( $(this).closest('tr').find('td[name ="furniture_type"]').text() );
-
-    // show Modal
-    $('#property_modal').modal('show');
-
-});
-
-
-$("#example1").DataTable({
-    "responsive": true,
-    "autoWidth": false,
-    "columnDefs": [
-        {
-            "targets": [ 0 ],
-            // "visible": false,
-        },
-    ]
-});
-
-$('#example2').DataTable({
-    "paging": true,
-    "lengthChange": false,
-    "searching": false,
-    "ordering": true,
-    "info": true,
-    "autoWidth": false,
-    "responsive": true,
-});
-
+    // for treeview
+    $('ul.nav-treeview a').filter(function() {
+        return this.href == url;
+    }).parentsUntil(".nav-sidebar > .nav-treeview").addClass('menu-open').prev('a').addClass('active');
 });

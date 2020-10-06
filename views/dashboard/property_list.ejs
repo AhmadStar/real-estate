@@ -144,9 +144,15 @@
               <label for="amenities" class="col-form-label">amenities:</label>
               <input type="text" name="amenities" class="form-control" id="amenities">
             </div>
+            <div class="input-group date" id="built_year" data-target-input="nearest">
+              <input type="text" name="built_year" class="form-control datetimepicker-input" data-target="#built_year"/>
+              <div class="input-group-append" data-target="#built_year" data-toggle="datetimepicker">
+                  <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+              </div>
+            </div>
             <div class="form-group">
-              <label for="built_year" class="col-form-label">built year:</label>
-              <input type="text" name="built_year" class="form-control" id="built_year">
+              <label for="message-text" class="col-form-label">Feature Images:</label>
+              <input type="file" name="feature_image" class="form-control" id="feature_image" accept="image/png, image/jpeg">
             </div>
             <div class="form-group">
               <label for="message-text" class="col-form-label">Property Images:</label>

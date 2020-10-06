@@ -9,7 +9,6 @@ var path = require('path');
 var i18n = require('./config/i18n');
 const HttpError = require('./config/http-error');
 var bodyParser = require("body-parser");
-// const formidableMiddleware = require('express-formidable');
 
 const app = express()
 
@@ -41,8 +40,6 @@ app.set('view engine', 'ejs')
 // app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ encoded: true }))
 
-//
-// app.use(formidableMiddleware());
 
 // cookie
 app.use(cookieParser());
@@ -78,15 +75,6 @@ app.get("/lang/:locale", function (req, res) {
   res.redirect('back');
 });
 
-// app.use(function(req, res, next){
-//   const setting = []; 
-//   setting['vision'] = "fsadasd asdsa d";
-//   setting['story'] = "fsadasd asdsa d";
-//   res.locals.settings = setting;
-//   next();
-// });
-
-
 app.use(async function(req, res, next){
   const array = [];
   const myquery = "SELECT name, value from site_settings WHERE lang = " + "'"+res.locals.current_locale+"'"
@@ -105,14 +93,6 @@ app.use(async function(req, res, next){
 // Routes
 app.use('/', require('./routes/home'))
 app.use('/dashboard', require('./routes/dashboard'))
-
-
-// app.use((req, res, next) => {
-//   const error = new HttpError('Could not find this route das d.', 404);
-//   // throw error;
-//   console.log(error);
-// });
-
 
 app.use('*', (req, res) => {
   res.render('404' ,{ title:'Page Not Found'})

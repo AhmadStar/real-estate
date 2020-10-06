@@ -1,4 +1,6 @@
 $(document).ready(function(){  
+    
+    // subscribe form
     $('#subscribe').on('click', function()
     {
         var form_fileds = $('#subscribe_form');
@@ -25,6 +27,7 @@ $(document).ready(function(){
         });
     });
 
+    // contact us form
     $('#contact_us_form').on('click', function()
     {
         var form_fileds = $('#contact_form');

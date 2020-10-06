@@ -64,7 +64,7 @@ router.post('/save_property', upload.any(), [
  dashboardController.save_property
 );
 // Update Property
-router.post('/update_property', upload.single('property_images'), dashboardController.update_property)
+router.post('/update_property', upload.any(), dashboardController.update_property)
 // Delete Property
 router.post('/delete_property', dashboardController.delete_property)
 

@@ -124,8 +124,6 @@ const save_property = async (req, res) => {
         })
     }
 
-    // console.log(req.files[0].filename)
-
     const { space, rooms, bath, garage, price, location, description, 
         small_desc, amenities, type, built_year } = req.body;
     
@@ -137,7 +135,6 @@ const save_property = async (req, res) => {
         if(req.files.length > 1){
             req.files.shift();
             req.files.forEach(element => { 
-                console.log(element);
                 const myquery = "INSERT INTO images (name , property_id) VALUES ('"+element.filename+"', '"+result.insertId+"')";
                 con.query(myquery, (err, result) => {  
                     if (err) throw err;
@@ -150,32 +147,51 @@ const save_property = async (req, res) => {
 };
 
 const update_property = async (req, res) => {
+    let errors = [];
+    const validation = validationResult(req)
+    if (!validation.isEmpty()) {
+        
+        validation.errors.forEach(element => {
+            errors.push({msg: element.param+' '+element.msg});
+        });
+        return res.json({ value: false, errors : errors });
+      }
+
     const { property_id, space , rooms, bath, garage, price, location, description, small_desc, type, amenities, built_year, furniture_type } = req.body;
 
-    // console.log(req.body)
+    files = [];
+    feature_image = '';
+    req.files.forEach(element => {
+        if(element.fieldname != 'feature_image')
+            files.push(element.filename);
+        else 
+         feature_image = element.filename
+    });
 
-    console.log(req.files.length);
+    files.forEach(element => {
+        const myquery = "INSERT INTO images (name , property_id) VALUES ('"+element+"', '"+property_id+"')";
+        con.query(myquery, (err, result) => {  
+            if (err) throw err;
+        });
+    });
 
-    // if(req.files.length == 0){
+    if(!feature_image){
+        const myquery = 
+        "update property set space ='"+space+"',rooms ='"+rooms+"' ,bath ='"+bath+"' ,garage ='"+garage+"' , price ='"+price+"' , location ='"+location+"' , description='"+description+"' , small_desc='"+small_desc+"' , type='"+type+"' , amenities='"+amenities+"', built_year='"+built_year+"', furniture_type='"+furniture_type+"' where id = "+ property_id;
 
-    // if(req.file){
-    //     const myquery = 
-    //     "update agents set name ='"+agent_name+"',facebook ='"+facebook+"' ,twitter ='"+twitter+"' ,instagram ='"+instagram+"' , phone ='"+phone+"' , role ='"+role+"' , image='"+req.file.filename+"' where id = "+ agent_id;
+        con.query(myquery, function (err, result) {  
+            if (err) throw err;
+            res.json({ value: true, result : result });
+        });
+    }else{
+        const myquery = 
+        "update property set feature_image ='"+feature_image+"', space ='"+space+"', rooms ='"+rooms+"' ,bath ='"+bath+"' ,garage ='"+garage+"' , price ='"+price+"' , location ='"+location+"' , description='"+description+"' , small_desc='"+small_desc+"' , type='"+type+"' , amenities='"+amenities+"', built_year='"+built_year+"', furniture_type='"+furniture_type+"' where id = "+ property_id;
 
-    //     console.log(myquery)
-
-    //     con.query(myquery, function (err, result) {  
-    //         if (err) throw err;
-    //         res.json({ result : result });
-    //     });
-    // }else{
-    //     const myquery = 
-    //     "update agents set name ='"+agent_name+"' where id = "+ agent_id;
-    //     con.query(myquery, function (err, result) {  
-    //         if (err) throw err;
-    //         res.json({ result : result });
-    //     });
-    // }
+        con.query(myquery, function (err, result) {  
+            if (err) throw err;
+            res.json({ value: true, result : result });
+        });
+    }
 };
 
 const delete_property = async (req, res) => {
