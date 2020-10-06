@@ -127,9 +127,10 @@ const get_property = (req, res) => {
         if (err) throw err;  
         if(property.length > 0){
             query2 = "SELECT * from images WHERE property_id = " + "'"+req.params.id+"'"
+            console.log(query2)
             con.query(query2, (err, gallery) => {  
                 if (err) throw err;
-                console.log(gallery.length);
+                console.log(gallery);
                 res.render('property' ,{property:property, gallery:gallery, title:'Property Details'})
             });
         }else{

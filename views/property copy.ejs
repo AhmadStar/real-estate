@@ -1,5 +1,5 @@
 <!-- Property Details Hero Section Begin -->
-<section class="pd-hero-section set-bg" data-setbg="../<%= property[0].feature_image %>">
+<section class="pd-hero-section set-bg" data-setbg="/img/<%= property[0].feature_image %>">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 offset-lg-2">
@@ -51,18 +51,18 @@
                     <div class="property-more-pic">
                         <% if(gallery.length == 0) { %>
                             <div class="product-pic-zoom">
-                                <img class="product-big-img" src="../<%= property[0].feature_image %>" alt="">
+                                <img class="product-big-img" src="/img/<%= property[0].feature_image %>" alt="">
                             </div>
                         <% } else{%>
                             <div class="product-pic-zoom">
-                                <img class="product-big-img" src="../<%= gallery[0].name %>" alt="">
+                                <img class="product-big-img" src="/img/<%= gallery[0].name %>" alt="">
                             </div>
                         <% }%>
                         <div class="product-thumbs">
                             <div class="product-thumbs-track ps-slider owl-carousel">
                                 <% gallery.forEach(function(row) { %>
-                                <div class="pt" data-imgbigurl="../<%= row.name %>"><img
-                                    src="../<%= row.name %>" alt="">
+                                <div class="pt" data-imgbigurl="/img/<%= row.name %>"><img
+                                    src="/img/<%= row.name %>" alt="">
                                 </div>
                                 <% }) %>
                             </div>
