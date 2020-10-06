@@ -19,6 +19,9 @@ router.get('/news', homeController.news)
 // Search
 router.post('/search', homeController.search)
 
+// Search
+router.get('/search', homeController.property_list)
+
 // Get Property By Id
 router.get('/property/:id', homeController.get_property)
 

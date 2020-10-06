@@ -132,27 +132,27 @@
             current = 0;
         }
 
-        thumbnailSlider
-            .find(".owl-item")
-            .removeClass("current")
-            .eq(current)
-            .addClass("current");
-        var onscreen = thumbnailSlider.find(".owl-item.active").length - 1;
-        var start = thumbnailSlider
-            .find(".owl-item.active")
-            .first()
-            .index();
-        var end = thumbnailSlider
-            .find(".owl-item.active")
-            .last()
-            .index();
+        // thumbnailSlider
+        //     .find(".owl-item")
+        //     .removeClass("current")
+        //     .eq(current)
+        //     .addClass("current");
+        // var onscreen = thumbnailSlider.find(".owl-item.active").length - 1;
+        // var start = thumbnailSlider
+        //     .find(".owl-item.active")
+        //     .first()
+        //     .index();
+        // var end = thumbnailSlider
+        //     .find(".owl-item.active")
+        //     .last()
+        //     .index();
 
-        if (current > end) {
-            thumbnailSlider.data("owl.carousel").to(current, 100, true);
-        }
-        if (current < start) {
-            thumbnailSlider.data("owl.carousel").to(current - onscreen, 100, true);
-        }
+        // if (current > end) {
+        //     thumbnailSlider.data("owl.carousel").to(current, 100, true);
+        // }
+        // if (current < start) {
+        //     thumbnailSlider.data("owl.carousel").to(current - onscreen, 100, true);
+        // }
     }
 
     function syncPosition2(el) {

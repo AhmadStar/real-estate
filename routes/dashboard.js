@@ -101,10 +101,16 @@ router.post('/update_partner', upload.single('partner_image'), dashboardControll
 // Delete Property
 router.post('/delete_partner', dashboardController.delete_partner)
 
+
 // Settings Handler 
 router.get('/settings', dashboardController.settings)
 // Settings handle
 router.post('/update_settings', dashboardController.update_settings)
 
+// Conatct List 
+router.get('/contact_list', dashboardController.contact_list)
+
+// Subscribe List 
+router.get('/subscribe_list', dashboardController.subscribe_list)
 
 module.exports = router

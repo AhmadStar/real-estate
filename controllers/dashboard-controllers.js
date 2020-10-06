@@ -3,6 +3,7 @@ const passport = require('passport')
 const con = require('../app')
 const { validationResult } = require('express-validator');
 const helpers = require('../config/helper');
+const e = require('express');
 
 const dashboard = async (req, res) => {
     res.render('dashboard/dashboard', { name:'req.user.name', layout: 'dashboard/dashboard_layout' })
@@ -372,6 +373,30 @@ const update_settings = async (req, res) => {
     }
 };
 
+const contact_list = async (req, res) => {
+    const myquery = "SELECT * from contact"
+    con.query(myquery, (err, contacts) => {  
+        if (err) throw err;  
+        if(contacts.length > 0){
+            res.render('dashboard/contact_list' ,{contacts: contacts, name:'req.user.name', layout: 'dashboard/dashboard_layout' })
+        }else{
+            res.render('dashboard/contact_list' ,{contacts: [], name:'req.user.name', layout: 'dashboard/dashboard_layout' })
+        }
+    });
+};
+
+const subscribe_list = async (req, res) => {
+    const myquery = "SELECT * from subscribe"
+    con.query(myquery, (err, subscribes) => {  
+        if (err) throw err;  
+        if(subscribes.length > 0){
+            res.render('dashboard/subscribe_list' , {subscribes: subscribes, name:'req.user.name', layout: 'dashboard/dashboard_layout' })
+        }else{
+            res.render('dashboard/subscribe_list' ,{subscribes: [], name:'req.user.name' , layout: 'dashboard/dashboard_layout' })
+        }
+    });
+};
+
 exports.dashboard = dashboard;
 
 // Auth 
@@ -406,3 +431,7 @@ exports.delete_agent = delete_agent;
 // Settings
 exports.settings = settings;
 exports.update_settings = update_settings;
+
+// Subscribe && Contact
+exports.contact_list = contact_list;
+exports.subscribe_list = subscribe_list;
