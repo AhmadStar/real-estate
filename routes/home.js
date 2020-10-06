@@ -37,7 +37,16 @@ router.post('/subscribe',[
     check('email').isEmail().withMessage('please enter a valid email'),
   ],homeController.subscribe)
 
+// Subscribe
+// router.post('/property/subscribe',[
+//   check('email').not().isEmpty().withMessage('email field is required'),
+//   check('email').isEmail().withMessage('please enter a valid email'),
+// ],homeController.subscribe)
+
 // Contact
 router.post('/contact_form', homeController.contact_form)
+
+// Contact
+// router.post('/property/contact_form', homeController.contact_form)
 
 module.exports = router

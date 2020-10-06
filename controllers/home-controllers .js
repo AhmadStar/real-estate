@@ -121,7 +121,10 @@ const news = async (req, res) => {
     res.render('news' ,{ partners:partners, title:'News'})
 };
 
-const get_property = (req, res) => {
+const get_property = async (req, res) => {
+    let top_agents = await get_top_agents()
+    let partners = await get_partner()
+
     const myquery = "SELECT * from property WHERE property.id = " + "'"+req.params.id+"' LIMIT 1"
     con.query(myquery, (err, property) => {  
         if (err) throw err;  
@@ -131,7 +134,7 @@ const get_property = (req, res) => {
             con.query(query2, (err, gallery) => {  
                 if (err) throw err;
                 console.log(gallery);
-                res.render('property' ,{property:property, gallery:gallery, title:'Property Details'})
+                res.render('property' ,{property:property, top_agents:top_agents ,partners:partners , gallery:gallery, title:'Property Details'})
             });
         }else{
             

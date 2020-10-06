@@ -77,6 +77,8 @@ app.get("/lang/:locale", function (req, res) {
 
 app.use(async function(req, res, next){
   const array = [];
+  var host = req.get('host');
+  res.locals.host = host;
   const myquery = "SELECT name, value from site_settings WHERE lang = " + "'"+res.locals.current_locale+"'"
   await con.query(myquery, (err, settings) => {  
         if (err) throw err;  
